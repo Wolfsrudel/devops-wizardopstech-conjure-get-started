@@ -1,0 +1,110 @@
+name: web-app
+description: Complete web application deployment bundle with Kubernetes, Docker, and CI/CD
+version: 1.0.0
+
+templates:
+  # Kubernetes manifests
+  - name: k8s-deployment
+    template: ../../templates/kubernetes/deployment
+    output: k8s/deployment.yaml
+
+  - name: k8s-service
+    template: ../../templates/kubernetes/service
+    output: k8s/service.yaml
+
+  - name: k8s-ingress
+    template: ../../templates/kubernetes/ingress
+    output: k8s/ingress.yaml
+
+  # Docker files
+  - name: dockerfile
+    template: ../../templates/docker/dockerfile
+    output: Dockerfile
+
+  - name: docker-compose
+    template: ../../templates/docker/docker-compose
+    output: docker-compose.yaml
+
+  # CI/CD
+  - name: github-actions
+    template: ../../templates/ci-cd/github-actions/node-ci
+    output: .github/workflows/ci.yaml
+
+variables:
+  # Application basics
+  - name: app_name
+    description: Name of your application
+    required: true
+
+  - name: language
+    description: Programming language (nodejs, python, go, java)
+    required: true
+
+  - name: port
+    description: Application port
+    default: 8080
+
+  # Kubernetes configuration
+  - name: namespace
+    description: Kubernetes namespace
+    default: default
+
+  - name: replicas
+    description: Number of replicas
+    default: 3
+
+  - name: image
+    description: Container image name
+    required: true
+
+  # Resource limits
+  - name: cpu_request
+    description: CPU request
+    default: 100m
+
+  - name: cpu_limit
+    description: CPU limit
+    default: 500m
+
+  - name: memory_request
+    description: Memory request
+    default: 128Mi
+
+  - name: memory_limit
+    description: Memory limit
+    default: 512Mi
+
+  # Ingress configuration
+  - name: host
+    description: Domain name for ingress
+    required: true
+
+  - name: enable_tls
+    description: Enable TLS/HTTPS
+    default: true
+
+  # Docker Compose options
+  - name: include_database
+    description: Include PostgreSQL database in docker-compose
+    default: true
+
+  - name: include_redis
+    description: Include Redis cache in docker-compose
+    default: false
+
+  # CI/CD options
+  - name: enable_docker
+    description: Build and push Docker images in CI
+    default: true
+
+  - name: enable_kubernetes_deploy
+    description: Deploy to Kubernetes in CI
+    default: true
+
+  - name: run_tests
+    description: Run tests in CI pipeline
+    default: true
+
+  - name: run_lint
+    description: Run linter in CI pipeline
+    default: true

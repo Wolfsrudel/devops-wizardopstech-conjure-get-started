@@ -1,0 +1,18 @@
+# Generated files (examples of what users might generate)
+*.generated.*
+output/
+generated/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log

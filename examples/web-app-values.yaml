@@ -1,0 +1,39 @@
+# Web App Bundle - Production Configuration Example
+
+# Application Configuration
+app_name: my-awesome-api
+language: nodejs
+port: 8080
+
+# Container Image
+image: ghcr.io/myorg/my-awesome-api
+
+# Kubernetes Configuration
+namespace: production
+replicas: 5
+
+# Resource Limits
+cpu_request: 250m
+cpu_limit: 1000m
+memory_request: 256Mi
+memory_limit: 1Gi
+
+# Ingress Configuration
+host: api.example.com
+enable_tls: true
+service_name: my-awesome-api
+service_port: 80
+
+# Docker Compose (for local development)
+include_database: true
+include_redis: true
+postgres_version: "15-alpine"
+redis_version: "7-alpine"
+
+# CI/CD Configuration
+enable_docker: true
+enable_kubernetes_deploy: true
+run_tests: true
+run_lint: true
+node_version: "20"
+docker_registry: ghcr.io

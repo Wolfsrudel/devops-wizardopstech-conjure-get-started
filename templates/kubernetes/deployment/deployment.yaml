@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .app_name }}
+  namespace: {{ .namespace }}
+  labels:
+    app: {{ .app_name }}
+    version: v1
+spec:
+  replicas: {{ .replicas }}
+  selector:
+    matchLabels:
+      app: {{ .app_name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .app_name }}
+        version: v1
+    spec:
+      containers:
+      - name: {{ .app_name }}
+        image: {{ .image }}
+        imagePullPolicy: {{ .image_pull_policy }}
+        ports:
+        - containerPort: {{ .port }}
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: {{ .cpu_request }}
+            memory: {{ .memory_request }}
+          limits:
+            cpu: {{ .cpu_limit }}
+            memory: {{ .memory_limit }}
+{{- if .enable_health_checks }}
+        livenessProbe:
+          httpGet:
+            path: {{ .health_check_path }}
+            port: {{ .port }}
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: {{ .health_check_path }}
+            port: {{ .port }}
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 2
+{{- end }}
+        env:
+        - name: PORT
+          value: "{{ .port }}"
+        - name: APP_NAME
+          value: "{{ .app_name }}"
+      restartPolicy: Always

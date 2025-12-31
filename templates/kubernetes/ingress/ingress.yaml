@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .app_name }}
+  namespace: {{ .namespace }}
+  labels:
+    app: {{ .app_name }}
+  annotations:
+    kubernetes.io/ingress.class: {{ .ingress_class }}
+{{- if eq .ingress_class "nginx" }}
+    nginx.ingress.kubernetes.io/ssl-redirect: "{{ .enable_tls }}"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "{{ .enable_tls }}"
+{{- end }}
+spec:
+{{- if .enable_tls }}
+  tls:
+  - hosts:
+    - {{ .host }}
+    secretName: {{ .tls_secret_name }}
+{{- end }}
+  rules:
+  - host: {{ .host }}
+    http:
+      paths:
+      - path: {{ .path }}
+        pathType: {{ .path_type }}
+        backend:
+          service:
+            name: {{ .service_name }}
+            port:
+              number: {{ .service_port }}

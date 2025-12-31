@@ -1,0 +1,36 @@
+name: env-file
+description: Environment variable template for different environments
+version: 1.0.0
+
+variables:
+  - name: app_name
+    description: Application name
+    required: true
+
+  - name: environment
+    description: Environment (development, staging, production)
+    default: development
+
+  - name: port
+    description: Application port
+    default: 8080
+
+  - name: database_url
+    description: Database connection URL
+    default: postgresql://localhost:5432/mydb
+
+  - name: redis_url
+    description: Redis connection URL
+    default: redis://localhost:6379
+
+  - name: log_level
+    description: Logging level (debug, info, warn, error)
+    default: info
+
+  - name: enable_cors
+    description: Enable CORS
+    default: true
+
+  - name: jwt_secret
+    description: JWT secret key (use placeholder in template)
+    default: CHANGE_ME_IN_PRODUCTION

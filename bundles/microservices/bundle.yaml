@@ -1,0 +1,131 @@
+name: microservices
+description: Microservices platform with multiple services, API gateway, and monitoring
+version: 1.0.0
+
+template_groups:
+  # API Gateway
+  gateway:
+    - name: gateway-deployment
+      template: ../../templates/kubernetes/deployment
+      output: k8s/gateway/deployment.yaml
+      variables:
+        app_name: "{{ .project_name }}-gateway"
+        image: "{{ .gateway_image }}"
+        port: 8080
+
+    - name: gateway-service
+      template: ../../templates/kubernetes/service
+      output: k8s/gateway/service.yaml
+      variables:
+        app_name: "{{ .project_name }}-gateway"
+        service_type: LoadBalancer
+
+    - name: gateway-ingress
+      template: ../../templates/kubernetes/ingress
+      output: k8s/gateway/ingress.yaml
+      variables:
+        app_name: "{{ .project_name }}-gateway"
+        host: "{{ .gateway_host }}"
+
+  # Auth Service
+  auth_service:
+    - name: auth-deployment
+      template: ../../templates/kubernetes/deployment
+      output: k8s/services/auth-deployment.yaml
+      variables:
+        app_name: "{{ .project_name }}-auth"
+        image: "{{ .auth_image }}"
+        port: 8081
+
+    - name: auth-service
+      template: ../../templates/kubernetes/service
+      output: k8s/services/auth-service.yaml
+      variables:
+        app_name: "{{ .project_name }}-auth"
+        port: 80
+        target_port: 8081
+
+  # User Service
+  user_service:
+    - name: user-deployment
+      template: ../../templates/kubernetes/deployment
+      output: k8s/services/user-deployment.yaml
+      variables:
+        app_name: "{{ .project_name }}-user"
+        image: "{{ .user_image }}"
+        port: 8082
+
+    - name: user-service
+      template: ../../templates/kubernetes/service
+      output: k8s/services/user-service.yaml
+      variables:
+        app_name: "{{ .project_name }}-user"
+        port: 80
+        target_port: 8082
+
+  # Order Service (conditional)
+  order_service:
+    - name: order-deployment
+      template: ../../templates/kubernetes/deployment
+      output: k8s/services/order-deployment.yaml
+      condition: "{{ .include_order_service }}"
+      variables:
+        app_name: "{{ .project_name }}-order"
+        image: "{{ .order_image }}"
+        port: 8083
+
+    - name: order-service
+      template: ../../templates/kubernetes/service
+      output: k8s/services/order-service.yaml
+      condition: "{{ .include_order_service }}"
+      variables:
+        app_name: "{{ .project_name }}-order"
+        port: 80
+        target_port: 8083
+
+variables:
+  # Project configuration
+  - name: project_name
+    description: Project name (used as prefix for all services)
+    required: true
+
+  - name: namespace
+    description: Kubernetes namespace
+    default: default
+
+  # Gateway configuration
+  - name: gateway_image
+    description: API Gateway container image
+    required: true
+
+  - name: gateway_host
+    description: Gateway domain name
+    required: true
+
+  # Auth service
+  - name: auth_image
+    description: Auth service container image
+    required: true
+
+  # User service
+  - name: user_image
+    description: User service container image
+    required: true
+
+  # Order service (optional)
+  - name: include_order_service
+    description: Include order service
+    default: false
+
+  - name: order_image
+    description: Order service container image
+    default: ""
+
+  # Common settings
+  - name: replicas
+    description: Default number of replicas for each service
+    default: 2
+
+  - name: enable_tls
+    description: Enable TLS for ingress
+    default: true

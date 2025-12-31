@@ -1,0 +1,16 @@
+name: kubernetes-configmap
+description: Kubernetes ConfigMap for application configuration
+version: 1.0.0
+
+variables:
+  - name: app_name
+    description: Name of the application
+    required: true
+
+  - name: namespace
+    description: Kubernetes namespace
+    default: default
+
+  - name: config_data
+    description: Configuration data as key-value pairs (YAML map)
+    required: true
