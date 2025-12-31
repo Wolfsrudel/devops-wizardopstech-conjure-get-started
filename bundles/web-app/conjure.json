@@ -1,0 +1,106 @@
+{
+  "bundle_type": "kubernetes",
+  "bundle_name": "web-app",
+  "bundle_description": "Complete web application deployment with Kubernetes manifests and Docker configuration",
+  "shared_variables": [
+    {
+      "name": "app_name",
+      "description": "Name of your application",
+      "type": "string",
+      "required": true,
+      "default": ""
+    },
+    {
+      "name": "namespace",
+      "description": "Kubernetes namespace",
+      "type": "string",
+      "required": false,
+      "default": "default"
+    },
+    {
+      "name": "port",
+      "description": "Application port",
+      "type": "int",
+      "required": false,
+      "default": "8080"
+    }
+  ],
+  "template_variables": {
+    "deployment.yaml.tmpl": [
+      {
+        "name": "replicas",
+        "description": "Number of pod replicas",
+        "type": "int",
+        "required": false,
+        "default": "3"
+      },
+      {
+        "name": "image",
+        "description": "Container image (e.g., my-api:1.0.0)",
+        "type": "string",
+        "required": true,
+        "default": ""
+      },
+      {
+        "name": "cpu_request",
+        "description": "CPU request (e.g., 100m)",
+        "type": "string",
+        "required": false,
+        "default": "100m"
+      },
+      {
+        "name": "cpu_limit",
+        "description": "CPU limit (e.g., 500m)",
+        "type": "string",
+        "required": false,
+        "default": "500m"
+      },
+      {
+        "name": "memory_request",
+        "description": "Memory request (e.g., 256Mi)",
+        "type": "string",
+        "required": false,
+        "default": "256Mi"
+      },
+      {
+        "name": "memory_limit",
+        "description": "Memory limit (e.g., 512Mi)",
+        "type": "string",
+        "required": false,
+        "default": "512Mi"
+      }
+    ],
+    "service.yaml.tmpl": [
+      {
+        "name": "service_type",
+        "description": "Service type (ClusterIP, NodePort, LoadBalancer)",
+        "type": "string",
+        "required": false,
+        "default": "ClusterIP"
+      },
+      {
+        "name": "service_port",
+        "description": "Service port",
+        "type": "int",
+        "required": false,
+        "default": "80"
+      }
+    ],
+    "docker-compose.yaml.tmpl": [
+      {
+        "name": "include_database",
+        "description": "Include PostgreSQL database",
+        "type": "bool",
+        "required": false,
+        "default": "true"
+      },
+      {
+        "name": "include_redis",
+        "description": "Include Redis cache",
+        "type": "bool",
+        "required": false,
+        "default": "false"
+      }
+    ]
+  }
+}

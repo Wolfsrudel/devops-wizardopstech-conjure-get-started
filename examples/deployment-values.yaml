@@ -1,0 +1,20 @@
+# Kubernetes Deployment Template - Example Values
+
+app_name: my-awesome-api
+namespace: production
+image: ghcr.io/myorg/my-awesome-api:v1.2.3
+replicas: 5
+port: 8080
+
+# Resource limits
+cpu_request: 250m
+cpu_limit: 1000m
+memory_request: 512Mi
+memory_limit: 2Gi
+
+# Health checks
+enable_health_checks: true
+health_check_path: /health
+
+# Image pull policy
+image_pull_policy: IfNotPresent

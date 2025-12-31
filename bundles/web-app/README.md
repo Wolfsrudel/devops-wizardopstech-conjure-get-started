@@ -1,78 +1,60 @@
 # Web App Bundle
 
-Complete web application deployment bundle that generates:
-
-- Kubernetes manifests (Deployment, Service, Ingress)
-- Dockerfile with multi-stage build
-- docker-compose.yaml for local development
-- GitHub Actions CI/CD pipeline
+Complete web application deployment bundle that generates Kubernetes manifests and Docker Compose configuration.
 
 ## Usage
 
-### With Interactive Prompts
-
 ```bash
-conjure bundle bundles/web-app
+conjure bundle web-app -o ./output
 ```
 
-### With Values File
+Or with a values file:
 
 ```bash
-conjure bundle bundles/web-app -f examples/web-app-values.yaml
-```
-
-### With Command-Line Variables
-
-```bash
-conjure bundle bundles/web-app \
-  --var app_name=my-api \
-  --var language=nodejs \
-  --var image=ghcr.io/myorg/my-api \
-  --var host=api.example.com \
-  --var replicas=5
+conjure bundle web-app -o ./output -f values.yaml
 ```
 
 ## What Gets Generated
 
-```
-.
-├── k8s/
-│   ├── deployment.yaml     # Kubernetes Deployment
-│   ├── service.yaml        # Kubernetes Service
-│   └── ingress.yaml        # Kubernetes Ingress with TLS
-├── .github/
-│   └── workflows/
-│       └── ci.yaml         # GitHub Actions CI/CD pipeline
-├── Dockerfile              # Multi-stage production Dockerfile
-└── docker-compose.yaml     # Local development stack
-```
+- `deployment.yaml` - Kubernetes Deployment
+- `service.yaml` - Kubernetes Service
+- `docker-compose.yaml` - Docker Compose for local development
 
-## Variables
-
-### Required
+## Required Variables
 
 - `app_name` - Name of your application
-- `language` - Programming language (nodejs, python, go, java)
-- `image` - Container image name (e.g., ghcr.io/myorg/myapp)
-- `host` - Domain name for ingress (e.g., api.example.com)
+- `image` - Container image (for deployment)
 
-### Optional
+## Optional Variables
 
+### Shared Variables
+- `namespace` - Kubernetes namespace (default: "default")
 - `port` - Application port (default: 8080)
-- `namespace` - Kubernetes namespace (default: default)
+
+### Deployment Variables
 - `replicas` - Number of replicas (default: 3)
-- `cpu_request` - CPU request (default: 100m)
-- `cpu_limit` - CPU limit (default: 500m)
-- `memory_request` - Memory request (default: 128Mi)
-- `memory_limit` - Memory limit (default: 512Mi)
-- `enable_tls` - Enable TLS/HTTPS (default: true)
-- `include_database` - Include PostgreSQL in docker-compose (default: true)
-- `include_redis` - Include Redis in docker-compose (default: false)
-- `enable_docker` - Build Docker images in CI (default: true)
-- `enable_kubernetes_deploy` - Deploy to K8s in CI (default: true)
-- `run_tests` - Run tests in CI (default: true)
-- `run_lint` - Run linter in CI (default: true)
+- `cpu_request` - CPU request (default: "100m")
+- `cpu_limit` - CPU limit (default: "500m")
+- `memory_request` - Memory request (default: "256Mi")
+- `memory_limit` - Memory limit (default: "512Mi")
+
+### Service Variables
+- `service_type` - Service type (default: "ClusterIP")
+- `service_port` - Service port (default: 80)
+
+### Docker Compose Variables
+- `include_database` - Include PostgreSQL (default: true)
+- `include_redis` - Include Redis (default: false)
 
 ## Example Values File
 
-See `examples/web-app-values.yaml` for a complete example.
+```yaml
+app_name: my-api
+namespace: production
+port: 8080
+image: ghcr.io/myorg/my-api:1.0.0
+replicas: 5
+service_type: LoadBalancer
+include_database: true
+include_redis: true
+```

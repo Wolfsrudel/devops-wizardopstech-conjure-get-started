@@ -1,0 +1,90 @@
+{
+  "template_name": "deployment.yaml",
+  "description": "Kubernetes Deployment manifest with configurable replicas, resources, and health checks",
+  "variables": [
+    {
+      "name": "app_name",
+      "description": "Name of the application",
+      "type": "string",
+      "required": true,
+      "default": ""
+    },
+    {
+      "name": "namespace",
+      "description": "Kubernetes namespace",
+      "type": "string",
+      "required": false,
+      "default": "default"
+    },
+    {
+      "name": "image",
+      "description": "Container image (e.g., nginx:latest)",
+      "type": "string",
+      "required": true,
+      "default": ""
+    },
+    {
+      "name": "replicas",
+      "description": "Number of pod replicas",
+      "type": "int",
+      "required": false,
+      "default": "3"
+    },
+    {
+      "name": "port",
+      "description": "Container port",
+      "type": "int",
+      "required": false,
+      "default": "8080"
+    },
+    {
+      "name": "cpu_request",
+      "description": "CPU request (e.g., 100m)",
+      "type": "string",
+      "required": false,
+      "default": "100m"
+    },
+    {
+      "name": "cpu_limit",
+      "description": "CPU limit (e.g., 500m)",
+      "type": "string",
+      "required": false,
+      "default": "500m"
+    },
+    {
+      "name": "memory_request",
+      "description": "Memory request (e.g., 128Mi)",
+      "type": "string",
+      "required": false,
+      "default": "128Mi"
+    },
+    {
+      "name": "memory_limit",
+      "description": "Memory limit (e.g., 512Mi)",
+      "type": "string",
+      "required": false,
+      "default": "512Mi"
+    },
+    {
+      "name": "enable_health_checks",
+      "description": "Enable liveness and readiness probes",
+      "type": "bool",
+      "required": false,
+      "default": "true"
+    },
+    {
+      "name": "health_check_path",
+      "description": "HTTP path for health checks",
+      "type": "string",
+      "required": false,
+      "default": "/health"
+    },
+    {
+      "name": "image_pull_policy",
+      "description": "Image pull policy (Always, IfNotPresent, Never)",
+      "type": "string",
+      "required": false,
+      "default": "IfNotPresent"
+    }
+  ]
+}

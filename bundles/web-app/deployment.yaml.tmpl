@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.app_name}}-deployment
+  namespace: {{.namespace}}
+  labels:
+    app: {{.app_name}}
+spec:
+  replicas: {{.replicas}}
+  selector:
+    matchLabels:
+      app: {{.app_name}}
+  template:
+    metadata:
+      labels:
+        app: {{.app_name}}
+    spec:
+      containers:
+      - name: {{.app_name}}
+        image: {{.image}}
+        ports:
+        - containerPort: {{.port}}
+          name: http
+        resources:
+          requests:
+            cpu: {{.cpu_request}}
+            memory: {{.memory_request}}
+          limits:
+            cpu: {{.cpu_limit}}
+            memory: {{.memory_limit}}
+        env:
+        - name: PORT
+          value: "{{.port}}"
+      restartPolicy: Always
