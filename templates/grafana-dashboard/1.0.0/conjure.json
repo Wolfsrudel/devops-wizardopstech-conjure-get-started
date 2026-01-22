@@ -1,0 +1,32 @@
+{
+  "schema_version": "v1",
+  "template_name": "dashboard.json",
+  "template_description": "Grafana dashboard configuration for application monitoring",
+  "template_type": "config",
+  "variables": [
+    {
+      "name": "dashboard_title",
+      "description": "Dashboard title",
+      "type": "string",
+      "default": "Application Metrics"
+    },
+    {
+      "name": "app_name",
+      "description": "Application name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "datasource",
+      "description": "Prometheus datasource name",
+      "type": "string",
+      "default": "Prometheus"
+    },
+    {
+      "name": "refresh_interval",
+      "description": "Dashboard refresh interval",
+      "type": "string",
+      "default": "5s"
+    }
+  ]
+}

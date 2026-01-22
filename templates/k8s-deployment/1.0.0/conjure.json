@@ -1,0 +1,80 @@
+{
+  "schema_version": "v1",
+  "template_name": "deployment.yaml",
+  "template_description": "Kubernetes Deployment manifest with configurable replicas, resources, and health checks",
+  "template_type": "kubernetes",
+  "variables": [
+    {
+      "name": "app_name",
+      "description": "Name of the application",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "namespace",
+      "description": "Kubernetes namespace",
+      "type": "string",
+      "default": "default"
+    },
+    {
+      "name": "image",
+      "description": "Container image (e.g., nginx:latest)",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "replicas",
+      "description": "Number of pod replicas",
+      "type": "int",
+      "default": "3"
+    },
+    {
+      "name": "port",
+      "description": "Container port",
+      "type": "int",
+      "default": "8080"
+    },
+    {
+      "name": "cpu_request",
+      "description": "CPU request (e.g., 100m)",
+      "type": "string",
+      "default": "100m"
+    },
+    {
+      "name": "cpu_limit",
+      "description": "CPU limit (e.g., 500m)",
+      "type": "string",
+      "default": "500m"
+    },
+    {
+      "name": "memory_request",
+      "description": "Memory request (e.g., 128Mi)",
+      "type": "string",
+      "default": "128Mi"
+    },
+    {
+      "name": "memory_limit",
+      "description": "Memory limit (e.g., 512Mi)",
+      "type": "string",
+      "default": "512Mi"
+    },
+    {
+      "name": "enable_health_checks",
+      "description": "Enable liveness and readiness probes",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "health_check_path",
+      "description": "HTTP path for health checks",
+      "type": "string",
+      "default": "/health"
+    },
+    {
+      "name": "image_pull_policy",
+      "description": "Image pull policy (Always, IfNotPresent, Never)",
+      "type": "string",
+      "default": "IfNotPresent"
+    }
+  ]
+}

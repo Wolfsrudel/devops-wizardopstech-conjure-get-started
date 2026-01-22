@@ -1,0 +1,69 @@
+{
+  "schema_version": "v1",
+  "bundle_name": "k8s-web-app",
+  "description": "Complete Kubernetes web application stack (Deployment + Service + Ingress)",
+  "variables": [
+    {
+      "name": "app_name",
+      "description": "Application name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "namespace",
+      "description": "Kubernetes namespace",
+      "type": "string",
+      "default": "default"
+    },
+    {
+      "name": "image",
+      "description": "Container image",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "replicas",
+      "description": "Number of replicas",
+      "type": "int",
+      "default": "3"
+    },
+    {
+      "name": "container_port",
+      "description": "Container port",
+      "type": "int",
+      "default": "8080"
+    },
+    {
+      "name": "hostname",
+      "description": "Ingress hostname",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "enable_tls",
+      "description": "Enable TLS",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "tls_secret_name",
+      "description": "TLS secret name",
+      "type": "string",
+      "default": ""
+    }
+  ],
+  "templates": [
+    {
+      "name": "deployment",
+      "output": "deployment.yaml"
+    },
+    {
+      "name": "service",
+      "output": "service.yaml"
+    },
+    {
+      "name": "ingress",
+      "output": "ingress.yaml"
+    }
+  ]
+}

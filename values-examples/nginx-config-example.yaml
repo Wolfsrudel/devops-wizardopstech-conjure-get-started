@@ -1,0 +1,9 @@
+server_name: api.mycompany.com
+listen_port: 80
+backend_host: localhost
+backend_port: 3000
+enable_ssl: true
+ssl_cert_path: /etc/nginx/ssl/cert.pem
+ssl_key_path: /etc/nginx/ssl/key.pem
+enable_gzip: true
+max_body_size: 50M

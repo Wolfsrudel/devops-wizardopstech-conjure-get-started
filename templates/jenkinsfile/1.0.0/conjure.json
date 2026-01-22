@@ -1,0 +1,50 @@
+{
+  "schema_version": "v1",
+  "template_name": "Jenkinsfile",
+  "template_description": "Jenkins declarative pipeline for CI/CD",
+  "template_type": "ci-cd",
+  "variables": [
+    {
+      "name": "app_name",
+      "description": "Application name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "node_version",
+      "description": "Node.js version",
+      "type": "string",
+      "default": "20"
+    },
+    {
+      "name": "run_tests",
+      "description": "Run test suite",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "run_linter",
+      "description": "Run linter",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "build_docker_image",
+      "description": "Build Docker image",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "docker_registry",
+      "description": "Docker registry URL",
+      "type": "string",
+      "default": "docker.io"
+    },
+    {
+      "name": "docker_credentials_id",
+      "description": "Jenkins Docker credentials ID",
+      "type": "string",
+      "default": "docker-credentials"
+    }
+  ]
+}

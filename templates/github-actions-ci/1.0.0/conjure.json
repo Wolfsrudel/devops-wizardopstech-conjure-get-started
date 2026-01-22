@@ -1,0 +1,56 @@
+{
+  "schema_version": "v1",
+  "template_name": "ci.yaml",
+  "template_description": "GitHub Actions CI workflow for build, test, and deploy",
+  "template_type": "ci-cd",
+  "variables": [
+    {
+      "name": "workflow_name",
+      "description": "Workflow name",
+      "type": "string",
+      "default": "CI"
+    },
+    {
+      "name": "app_name",
+      "description": "Application name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "node_version",
+      "description": "Node.js version",
+      "type": "string",
+      "default": "20"
+    },
+    {
+      "name": "run_tests",
+      "description": "Run test suite",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "run_linter",
+      "description": "Run linter",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "build_docker_image",
+      "description": "Build Docker image",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "docker_registry",
+      "description": "Docker registry (e.g., ghcr.io, docker.io)",
+      "type": "string",
+      "default": "ghcr.io"
+    },
+    {
+      "name": "docker_image_name",
+      "description": "Docker image name",
+      "type": "string",
+      "default": ""
+    }
+  ]
+}

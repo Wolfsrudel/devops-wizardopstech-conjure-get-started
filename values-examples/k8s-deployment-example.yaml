@@ -1,0 +1,12 @@
+app_name: my-api
+namespace: production
+image: myregistry/my-api:v1.2.3
+replicas: 5
+port: 3000
+cpu_request: 200m
+cpu_limit: 1000m
+memory_request: 256Mi
+memory_limit: 1Gi
+enable_health_checks: true
+health_check_path: /api/health
+image_pull_policy: IfNotPresent

@@ -1,0 +1,68 @@
+{
+  "schema_version": "v1",
+  "template_name": "main.tf",
+  "template_description": "Terraform configuration for AWS EC2 instance",
+  "template_type": "terraform",
+  "variables": [
+    {
+      "name": "instance_name",
+      "description": "EC2 instance name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "instance_type",
+      "description": "EC2 instance type",
+      "type": "string",
+      "default": "t3.micro"
+    },
+    {
+      "name": "ami_id",
+      "description": "AMI ID (leave empty for latest Amazon Linux 2023)",
+      "type": "string",
+      "default": "ami-0c02fb55b3b8c0e6f"
+    },
+    {
+      "name": "region",
+      "description": "AWS region",
+      "type": "string",
+      "default": "us-east-1"
+    },
+    {
+      "name": "vpc_id",
+      "description": "VPC ID",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "subnet_id",
+      "description": "Subnet ID",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "key_name",
+      "description": "SSH key pair name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "root_volume_size",
+      "description": "Root volume size in GB",
+      "type": "int",
+      "default": "20"
+    },
+    {
+      "name": "enable_public_ip",
+      "description": "Associate public IP address",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "environment",
+      "description": "Environment tag (dev, staging, prod)",
+      "type": "string",
+      "default": "dev"
+    }
+  ]
+}

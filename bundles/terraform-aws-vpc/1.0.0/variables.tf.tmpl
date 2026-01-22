@@ -1,0 +1,23 @@
+variable "vpc_name" {
+  description = "VPC name"
+  type        = string
+  default     = "{{.vpc_name}}"
+}
+
+variable "region" {
+  description = "AWS region"
+  type        = string
+  default     = "{{.region}}"
+}
+
+variable "vpc_cidr" {
+  description = "VPC CIDR block"
+  type        = string
+  default     = "{{.vpc_cidr}}"
+}
+
+variable "environment" {
+  description = "Environment tag"
+  type        = string
+  default     = "{{.environment}}"
+}

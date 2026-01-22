@@ -1,0 +1,56 @@
+{
+  "schema_version": "v1",
+  "template_name": ".env",
+  "template_description": "Environment variables file for applications",
+  "template_type": "system",
+  "variables": [
+    {
+      "name": "app_name",
+      "description": "Application name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "environment",
+      "description": "Environment (development, staging, production)",
+      "type": "string",
+      "default": "production"
+    },
+    {
+      "name": "app_port",
+      "description": "Application port",
+      "type": "int",
+      "default": "8080"
+    },
+    {
+      "name": "log_level",
+      "description": "Log level (debug, info, warn, error)",
+      "type": "string",
+      "default": "info"
+    },
+    {
+      "name": "database_url",
+      "description": "Database connection URL",
+      "type": "string",
+      "default": "postgresql://user:password@localhost:5432/dbname"
+    },
+    {
+      "name": "redis_url",
+      "description": "Redis connection URL",
+      "type": "string",
+      "default": "redis://localhost:6379"
+    },
+    {
+      "name": "enable_cors",
+      "description": "Enable CORS",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "api_key",
+      "description": "API key for external services",
+      "type": "string",
+      "default": ""
+    }
+  ]
+}

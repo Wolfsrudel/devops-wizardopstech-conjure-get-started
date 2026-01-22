@@ -1,0 +1,62 @@
+{
+  "schema_version": "v1",
+  "template_name": "service.service",
+  "template_description": "Linux systemd service unit file",
+  "template_type": "system",
+  "variables": [
+    {
+      "name": "service_name",
+      "description": "Service name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "description",
+      "description": "Service description",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "exec_start",
+      "description": "Command to start the service",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "working_directory",
+      "description": "Working directory",
+      "type": "string",
+      "default": "/opt/app"
+    },
+    {
+      "name": "user",
+      "description": "User to run service as",
+      "type": "string",
+      "default": "app"
+    },
+    {
+      "name": "group",
+      "description": "Group to run service as",
+      "type": "string",
+      "default": "app"
+    },
+    {
+      "name": "restart_policy",
+      "description": "Restart policy (always, on-failure, no)",
+      "type": "string",
+      "default": "always"
+    },
+    {
+      "name": "restart_sec",
+      "description": "Restart delay in seconds",
+      "type": "int",
+      "default": "10"
+    },
+    {
+      "name": "enable_logging",
+      "description": "Enable standard output logging",
+      "type": "bool",
+      "default": "true"
+    }
+  ]
+}

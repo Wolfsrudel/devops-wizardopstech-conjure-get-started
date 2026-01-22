@@ -1,0 +1,17 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{.cert_name}}
+  namespace: {{.namespace}}
+spec:
+  secretName: {{.secret_name}}
+  duration: {{.duration}}
+  renewBefore: {{.renew_before}}
+  issuerRef:
+    name: {{.issuer_name}}
+    kind: {{.issuer_kind}}
+  commonName: {{.common_name}}
+  dnsNames:
+  - {{.common_name}}
+{{if .dns_names}}{{range $domain := split .dns_names ","}}  - {{$domain}}
+{{end}}{{end}}

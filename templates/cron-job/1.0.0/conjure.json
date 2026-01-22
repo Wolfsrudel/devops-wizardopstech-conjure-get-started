@@ -1,0 +1,56 @@
+{
+  "schema_version": "v1",
+  "template_name": "crontab",
+  "template_description": "Crontab entry for scheduled tasks",
+  "template_type": "system",
+  "variables": [
+    {
+      "name": "job_name",
+      "description": "Job name (comment)",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "schedule",
+      "description": "Cron schedule (e.g., 0 2 * * * for 2 AM daily)",
+      "type": "string",
+      "default": "0 2 * * *"
+    },
+    {
+      "name": "command",
+      "description": "Command to execute",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "user",
+      "description": "User to run job as",
+      "type": "string",
+      "default": "root"
+    },
+    {
+      "name": "enable_logging",
+      "description": "Log output to file",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "log_file",
+      "description": "Log file path",
+      "type": "string",
+      "default": "/var/log/cron.log"
+    },
+    {
+      "name": "enable_email",
+      "description": "Send email on errors",
+      "type": "bool",
+      "default": "false"
+    },
+    {
+      "name": "mailto",
+      "description": "Email address for notifications",
+      "type": "string",
+      "default": "admin@example.com"
+    }
+  ]
+}

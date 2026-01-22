@@ -1,0 +1,107 @@
+pipeline {
+    agent any
+
+    environment {
+        NODE_VERSION = '{{.node_version}}'
+        APP_NAME = '{{.app_name}}'
+{{if .build_docker_image}}        DOCKER_REGISTRY = '{{.docker_registry}}'
+        DOCKER_CREDENTIALS = credentials('{{.docker_credentials_id}}')
+        DOCKER_IMAGE = "${DOCKER_REGISTRY}/${APP_NAME}"
+{{end}}    }
+
+    tools {
+        nodejs "nodejs-${NODE_VERSION}"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+                sh 'node --version'
+                sh 'npm --version'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm ci'
+            }
+        }
+{{if .run_linter}}
+
+        stage('Lint') {
+            steps {
+                sh 'npm run lint'
+            }
+        }
+{{end}}{{if .run_tests}}
+
+        stage('Test') {
+            steps {
+                sh 'npm test'
+            }
+            post {
+                always {
+                    junit 'test-results/**/*.xml'
+                    publishHTML([
+                        reportDir: 'coverage',
+                        reportFiles: 'index.html',
+                        reportName: 'Coverage Report'
+                    ])
+                }
+            }
+        }
+{{end}}
+
+        stage('Build') {
+            steps {
+                sh 'npm run build'
+            }
+            post {
+                success {
+                    archiveArtifacts artifacts: 'dist/**/*', fingerprint: true
+                }
+            }
+        }
+{{if .build_docker_image}}
+
+        stage('Docker Build') {
+            steps {
+                script {
+                    def imageTag = "${DOCKER_IMAGE}:${env.GIT_COMMIT.take(7)}"
+                    def latestTag = "${DOCKER_IMAGE}:latest"
+
+                    docker.build(imageTag)
+                    docker.image(imageTag).tag('latest')
+                }
+            }
+        }
+
+        stage('Docker Push') {
+            when {
+                branch 'main'
+            }
+            steps {
+                script {
+                    docker.withRegistry("https://${DOCKER_REGISTRY}", DOCKER_CREDENTIALS.id) {
+                        def imageTag = "${DOCKER_IMAGE}:${env.GIT_COMMIT.take(7)}"
+                        docker.image(imageTag).push()
+                        docker.image("${DOCKER_IMAGE}:latest").push()
+                    }
+                }
+            }
+        }
+{{end}}    }
+
+    post {
+        always {
+            cleanWs()
+        }
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
+}

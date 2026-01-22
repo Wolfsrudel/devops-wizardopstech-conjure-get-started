@@ -1,0 +1,50 @@
+{
+  "schema_version": "v1",
+  "template_name": "prometheus.yml",
+  "template_description": "Prometheus server configuration",
+  "template_type": "config",
+  "variables": [
+    {
+      "name": "scrape_interval",
+      "description": "Global scrape interval",
+      "type": "string",
+      "default": "15s"
+    },
+    {
+      "name": "evaluation_interval",
+      "description": "Rule evaluation interval",
+      "type": "string",
+      "default": "15s"
+    },
+    {
+      "name": "scrape_timeout",
+      "description": "Scrape timeout",
+      "type": "string",
+      "default": "10s"
+    },
+    {
+      "name": "app_name",
+      "description": "Application name to monitor",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "app_targets",
+      "description": "Application targets (comma-separated, e.g., localhost:8080,localhost:8081)",
+      "type": "string",
+      "default": "localhost:8080"
+    },
+    {
+      "name": "enable_node_exporter",
+      "description": "Enable node exporter scraping",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "node_exporter_targets",
+      "description": "Node exporter targets (comma-separated)",
+      "type": "string",
+      "default": "localhost:9100"
+    }
+  ]
+}

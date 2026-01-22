@@ -1,0 +1,42 @@
+bind {{.bind_address}}
+port {{.port}}
+protected-mode yes
+
+timeout 0
+tcp-keepalive 300
+
+daemonize no
+pidfile /var/run/redis_6379.pid
+loglevel notice
+logfile ""
+
+databases 16
+
+maxmemory {{.max_memory}}
+maxmemory-policy {{.max_memory_policy}}
+{{if .requirepass}}
+requirepass {{.requirepass}}
+{{end}}{{if .enable_persistence}}
+save 900 1
+save 300 10
+save 60 10000
+
+stop-writes-on-bgsave-error yes
+rdbcompression yes
+rdbchecksum yes
+dbfilename dump.rdb
+dir /data
+{{else}}
+save ""
+{{end}}{{if .enable_aof}}
+appendonly yes
+appendfilename "appendonly.aof"
+appendfsync everysec
+no-appendfsync-on-rewrite no
+auto-aof-rewrite-percentage 100
+auto-aof-rewrite-min-size 64mb
+{{else}}
+appendonly no
+{{end}}
+slowlog-log-slower-than 10000
+slowlog-max-len 128

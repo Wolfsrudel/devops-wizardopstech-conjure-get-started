@@ -1,0 +1,8 @@
+workflow_name: CI/CD Pipeline
+app_name: my-api
+node_version: 20
+run_tests: true
+run_linter: true
+build_docker_image: true
+docker_registry: ghcr.io
+docker_image_name: myorg/my-api

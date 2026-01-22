@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{.app_name}}-ingress
+  namespace: {{.namespace}}
+  labels:
+    app: {{.app_name}}
+  annotations:
+{{if .enable_cors}}    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+{{end}}{{if .enable_rate_limiting}}    nginx.ingress.kubernetes.io/limit-rps: "{{.rate_limit}}"
+{{end}}    nginx.ingress.kubernetes.io/ssl-redirect: "{{.enable_tls}}"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: {{.ingress_class}}
+{{if .enable_tls}}  tls:
+  - hosts:
+    - {{.hostname}}
+    secretName: {{.tls_secret_name}}
+{{end}}  rules:
+  - host: {{.hostname}}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: {{.service_name}}
+            port:
+              number: {{.service_port}}

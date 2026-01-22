@@ -1,0 +1,56 @@
+{
+  "schema_version": "v1",
+  "template_name": "hpa.yaml",
+  "template_description": "Kubernetes Horizontal Pod Autoscaler for automatic scaling",
+  "template_type": "kubernetes",
+  "variables": [
+    {
+      "name": "app_name",
+      "description": "Name of the application",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "namespace",
+      "description": "Kubernetes namespace",
+      "type": "string",
+      "default": "default"
+    },
+    {
+      "name": "deployment_name",
+      "description": "Target deployment name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "min_replicas",
+      "description": "Minimum number of replicas",
+      "type": "int",
+      "default": "2"
+    },
+    {
+      "name": "max_replicas",
+      "description": "Maximum number of replicas",
+      "type": "int",
+      "default": "10"
+    },
+    {
+      "name": "target_cpu_utilization",
+      "description": "Target CPU utilization percentage",
+      "type": "int",
+      "default": "70"
+    },
+    {
+      "name": "target_memory_utilization",
+      "description": "Target memory utilization percentage",
+      "type": "int",
+      "default": "80"
+    },
+    {
+      "name": "enable_memory_scaling",
+      "description": "Enable memory-based scaling",
+      "type": "bool",
+      "default": "true"
+    }
+  ]
+}

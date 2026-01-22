@@ -1,0 +1,9 @@
+service_name: my-api
+description: My API Service
+exec_start: /opt/my-api/bin/server
+working_directory: /opt/my-api
+user: myapi
+group: myapi
+restart_policy: always
+restart_sec: 10
+enable_logging: true

@@ -1,0 +1,68 @@
+{
+  "schema_version": "v1",
+  "template_name": "server.properties",
+  "template_description": "Minecraft server configuration",
+  "template_type": "gaming",
+  "variables": [
+    {
+      "name": "server_name",
+      "description": "Server name (MOTD)",
+      "type": "string",
+      "default": "A Minecraft Server"
+    },
+    {
+      "name": "server_port",
+      "description": "Server port",
+      "type": "int",
+      "default": "25565"
+    },
+    {
+      "name": "gamemode",
+      "description": "Default gamemode (survival, creative, adventure, spectator)",
+      "type": "string",
+      "default": "survival"
+    },
+    {
+      "name": "difficulty",
+      "description": "Difficulty (peaceful, easy, normal, hard)",
+      "type": "string",
+      "default": "normal"
+    },
+    {
+      "name": "max_players",
+      "description": "Maximum players",
+      "type": "int",
+      "default": "20"
+    },
+    {
+      "name": "view_distance",
+      "description": "View distance (chunks)",
+      "type": "int",
+      "default": "10"
+    },
+    {
+      "name": "enable_whitelist",
+      "description": "Enable whitelist",
+      "type": "bool",
+      "default": "false"
+    },
+    {
+      "name": "enable_pvp",
+      "description": "Enable PvP",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "allow_flight",
+      "description": "Allow flight",
+      "type": "bool",
+      "default": "false"
+    },
+    {
+      "name": "spawn_protection",
+      "description": "Spawn protection radius",
+      "type": "int",
+      "default": "16"
+    }
+  ]
+}

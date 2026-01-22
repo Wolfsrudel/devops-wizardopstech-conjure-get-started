@@ -1,0 +1,62 @@
+{
+  "schema_version": "v1",
+  "template_name": "nginx.conf",
+  "template_description": "NGINX server configuration for reverse proxy",
+  "template_type": "config",
+  "variables": [
+    {
+      "name": "server_name",
+      "description": "Server name (domain)",
+      "type": "string",
+      "default": "example.com"
+    },
+    {
+      "name": "listen_port",
+      "description": "Listen port",
+      "type": "int",
+      "default": "80"
+    },
+    {
+      "name": "backend_host",
+      "description": "Backend host",
+      "type": "string",
+      "default": "localhost"
+    },
+    {
+      "name": "backend_port",
+      "description": "Backend port",
+      "type": "int",
+      "default": "8080"
+    },
+    {
+      "name": "enable_ssl",
+      "description": "Enable SSL/TLS",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "ssl_cert_path",
+      "description": "SSL certificate path",
+      "type": "string",
+      "default": "/etc/nginx/ssl/cert.pem"
+    },
+    {
+      "name": "ssl_key_path",
+      "description": "SSL key path",
+      "type": "string",
+      "default": "/etc/nginx/ssl/key.pem"
+    },
+    {
+      "name": "enable_gzip",
+      "description": "Enable gzip compression",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "max_body_size",
+      "description": "Maximum request body size",
+      "type": "string",
+      "default": "10M"
+    }
+  ]
+}

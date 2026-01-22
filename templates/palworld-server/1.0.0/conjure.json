@@ -1,0 +1,80 @@
+{
+  "schema_version": "v1",
+  "template_name": "PalWorldSettings.ini",
+  "template_description": "Palworld dedicated server configuration",
+  "template_type": "gaming",
+  "variables": [
+    {
+      "name": "server_name",
+      "description": "Server name",
+      "type": "string",
+      "default": "Palworld Server"
+    },
+    {
+      "name": "server_description",
+      "description": "Server description",
+      "type": "string",
+      "default": "Welcome to our Palworld server!"
+    },
+    {
+      "name": "server_password",
+      "description": "Server password (leave empty for public)",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "admin_password",
+      "description": "Admin password",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "server_port",
+      "description": "Server port",
+      "type": "int",
+      "default": "8211"
+    },
+    {
+      "name": "max_players",
+      "description": "Maximum players",
+      "type": "int",
+      "default": "32"
+    },
+    {
+      "name": "difficulty",
+      "description": "Difficulty (None, Normal, Difficult)",
+      "type": "string",
+      "default": "Normal"
+    },
+    {
+      "name": "day_time_speed_rate",
+      "description": "Day time speed multiplier",
+      "type": "string",
+      "default": "1.000000"
+    },
+    {
+      "name": "night_time_speed_rate",
+      "description": "Night time speed multiplier",
+      "type": "string",
+      "default": "1.000000"
+    },
+    {
+      "name": "exp_rate",
+      "description": "Experience multiplier",
+      "type": "string",
+      "default": "1.000000"
+    },
+    {
+      "name": "pal_capture_rate",
+      "description": "Pal capture rate multiplier",
+      "type": "string",
+      "default": "1.000000"
+    },
+    {
+      "name": "enable_pvp",
+      "description": "Enable PvP",
+      "type": "bool",
+      "default": "false"
+    }
+  ]
+}

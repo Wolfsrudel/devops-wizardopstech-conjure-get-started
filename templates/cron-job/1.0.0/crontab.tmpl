@@ -1,0 +1,9 @@
+# {{.job_name}}
+{{if .enable_email}}MAILTO={{.mailto}}
+{{else}}MAILTO=""
+{{end}}
+# Schedule: {{.schedule}}
+# User: {{.user}}
+{{if .enable_logging}}{{.schedule}} {{.user}} {{.command}} >> {{.log_file}} 2>&1
+{{else}}{{.schedule}} {{.user}} {{.command}} > /dev/null 2>&1
+{{end}}

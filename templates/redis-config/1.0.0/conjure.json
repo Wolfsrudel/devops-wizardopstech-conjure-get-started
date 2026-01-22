@@ -1,0 +1,50 @@
+{
+  "schema_version": "v1",
+  "template_name": "redis.conf",
+  "template_description": "Redis server configuration",
+  "template_type": "config",
+  "variables": [
+    {
+      "name": "port",
+      "description": "Redis port",
+      "type": "int",
+      "default": "6379"
+    },
+    {
+      "name": "bind_address",
+      "description": "Bind address",
+      "type": "string",
+      "default": "0.0.0.0"
+    },
+    {
+      "name": "max_memory",
+      "description": "Maximum memory (e.g., 256mb, 1gb)",
+      "type": "string",
+      "default": "256mb"
+    },
+    {
+      "name": "max_memory_policy",
+      "description": "Eviction policy (allkeys-lru, volatile-lru, noeviction)",
+      "type": "string",
+      "default": "allkeys-lru"
+    },
+    {
+      "name": "enable_persistence",
+      "description": "Enable RDB persistence",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "enable_aof",
+      "description": "Enable AOF persistence",
+      "type": "bool",
+      "default": "false"
+    },
+    {
+      "name": "requirepass",
+      "description": "Redis password (leave empty for no auth)",
+      "type": "string",
+      "default": ""
+    }
+  ]
+}

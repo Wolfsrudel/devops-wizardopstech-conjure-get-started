@@ -1,0 +1,44 @@
+{
+  "schema_version": "v1",
+  "template_name": "service.yaml",
+  "template_description": "Kubernetes Service manifest (ClusterIP, NodePort, LoadBalancer)",
+  "template_type": "kubernetes",
+  "variables": [
+    {
+      "name": "app_name",
+      "description": "Name of the application",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "namespace",
+      "description": "Kubernetes namespace",
+      "type": "string",
+      "default": "default"
+    },
+    {
+      "name": "service_type",
+      "description": "Service type (ClusterIP, NodePort, LoadBalancer)",
+      "type": "string",
+      "default": "ClusterIP"
+    },
+    {
+      "name": "service_port",
+      "description": "Service port",
+      "type": "int",
+      "default": "80"
+    },
+    {
+      "name": "target_port",
+      "description": "Container target port",
+      "type": "int",
+      "default": "8080"
+    },
+    {
+      "name": "protocol",
+      "description": "Protocol (TCP, UDP)",
+      "type": "string",
+      "default": "TCP"
+    }
+  ]
+}

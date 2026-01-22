@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  {{.app_name}}:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: {{.app_name}}
+    ports:
+      - "{{.app_port}}:{{.app_port}}"
+    environment:
+      - NODE_ENV=development
+      - PORT={{.app_port}}
+{{if .include_database}}      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/{{.app_name}}
+{{end}}{{if .include_redis}}      - REDIS_URL=redis://redis:6379
+{{end}}    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+{{if .include_database}}      - postgres
+{{end}}{{if .include_redis}}      - redis
+{{end}}    restart: unless-stopped
+{{if .include_database}}
+  postgres:
+    image: postgres:15-alpine
+    container_name: {{.app_name}}-postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB={{.app_name}}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
+{{end}}{{if .include_redis}}
+  redis:
+    image: redis:7-alpine
+    container_name: {{.app_name}}-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+{{end}}
+volumes:
+{{if .include_database}}  postgres_data:
+{{end}}{{if .include_redis}}  redis_data:
+{{end}}

@@ -1,0 +1,68 @@
+{
+  "schema_version": "v1",
+  "template_name": "main.tf",
+  "template_description": "Terraform configuration for GCP Compute Engine instance",
+  "template_type": "terraform",
+  "variables": [
+    {
+      "name": "instance_name",
+      "description": "Compute instance name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "project_id",
+      "description": "GCP project ID",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "region",
+      "description": "GCP region",
+      "type": "string",
+      "default": "us-central1"
+    },
+    {
+      "name": "zone",
+      "description": "GCP zone",
+      "type": "string",
+      "default": "us-central1-a"
+    },
+    {
+      "name": "machine_type",
+      "description": "Machine type",
+      "type": "string",
+      "default": "e2-micro"
+    },
+    {
+      "name": "boot_disk_size_gb",
+      "description": "Boot disk size in GB",
+      "type": "int",
+      "default": "20"
+    },
+    {
+      "name": "ssh_user",
+      "description": "SSH username",
+      "type": "string",
+      "default": "admin"
+    },
+    {
+      "name": "ssh_public_key",
+      "description": "SSH public key",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "enable_public_ip",
+      "description": "Assign external IP address",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "environment",
+      "description": "Environment label (dev, staging, prod)",
+      "type": "string",
+      "default": "dev"
+    }
+  ]
+}

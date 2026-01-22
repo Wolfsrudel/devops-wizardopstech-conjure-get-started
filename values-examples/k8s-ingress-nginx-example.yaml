@@ -1,0 +1,11 @@
+app_name: my-api
+namespace: production
+hostname: api.example.com
+service_name: my-api-service
+service_port: 80
+enable_tls: true
+tls_secret_name: api-example-com-tls
+ingress_class: nginx
+enable_cors: true
+enable_rate_limiting: true
+rate_limit: 200

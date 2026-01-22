@@ -1,0 +1,50 @@
+{
+  "schema_version": "v1",
+  "template_name": "secret.yaml",
+  "template_description": "Kubernetes Secret for sensitive data (Base64 encoded)",
+  "template_type": "kubernetes",
+  "variables": [
+    {
+      "name": "app_name",
+      "description": "Name of the application",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "namespace",
+      "description": "Kubernetes namespace",
+      "type": "string",
+      "default": "default"
+    },
+    {
+      "name": "secret_name",
+      "description": "Secret name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "db_username",
+      "description": "Database username (will be Base64 encoded)",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "db_password",
+      "description": "Database password (will be Base64 encoded)",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "api_key",
+      "description": "API key (will be Base64 encoded)",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "secret_type",
+      "description": "Secret type (Opaque, kubernetes.io/tls, etc.)",
+      "type": "string",
+      "default": "Opaque"
+    }
+  ]
+}

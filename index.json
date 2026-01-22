@@ -1,0 +1,800 @@
+{
+  "schema_version": "v1",
+  "last_updated": "2026-01-21T20:52:42.7911732-05:00",
+  "templates": [
+    {
+      "name": "argocd-application",
+      "type": "kubernetes",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "application.yaml.tmpl",
+              "path": "templates/argocd-application/1.0.0/application.yaml.tmpl",
+              "size": 719,
+              "sha256": "6b7899663042edb0ae888cf15f4e2a5cd48ac52616ca77eb2b7dc29ebb588069"
+            },
+            {
+              "name": "conjure.json",
+              "path": "templates/argocd-application/1.0.0/conjure.json",
+              "size": 1469,
+              "sha256": "7e2c97e0ac0de63bb8f6ec6e05e6f382b7b556413d586bb7ec7076bbe474abce"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "cron-job",
+      "type": "system",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/cron-job/1.0.0/conjure.json",
+              "size": 1329,
+              "sha256": "ca46ade690f85099f6db1e4b6708eb1d3fec60510f86e28759e3b89f4a6c4337"
+            },
+            {
+              "name": "crontab.tmpl",
+              "path": "templates/cron-job/1.0.0/crontab.tmpl",
+              "size": 285,
+              "sha256": "80af0683bfc2a414a5d30bd0656fea41169f6783176f74957bf1fbd7fe879bc3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "docker-compose",
+      "type": "docker",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/docker-compose/1.0.0/conjure.json",
+              "size": 1051,
+              "sha256": "b7ecb67e453b41d2a152d6de6f636a1e8a880e8fc7cbb112f756a7c30e5cbfc9"
+            },
+            {
+              "name": "docker-compose.yaml.tmpl",
+              "path": "templates/docker-compose/1.0.0/docker-compose.yaml.tmpl",
+              "size": 1346,
+              "sha256": "2c41b69ecaa91e731bce8c13c3802d9b1f94a0e0d187003ca3ba0dc31c4c50fc"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "dockerfile",
+      "type": "docker",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "Dockerfile.tmpl",
+              "path": "templates/dockerfile/1.0.0/Dockerfile.tmpl",
+              "size": 1314,
+              "sha256": "5f6d0422e79e7c7d525f6c7b2a64f9195dbce31d0868803d1421c889d43ada5b"
+            },
+            {
+              "name": "conjure.json",
+              "path": "templates/dockerfile/1.0.0/conjure.json",
+              "size": 1056,
+              "sha256": "21dd952b541f880d9adbc0da528156d75a0bbc7c53dbea82ba032ce81df60c24"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "env-file",
+      "type": "system",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/env-file/1.0.0/conjure.json",
+              "size": 1394,
+              "sha256": "ca431a3fad3a7a7706ffe1edf575ed2e1d0e2f2351a09e7e28b35c049c0b6c9f"
+            },
+            {
+              "name": "env.tmpl",
+              "path": "templates/env-file/1.0.0/env.tmpl",
+              "size": 473,
+              "sha256": "dbc8f185d71bc3992a4654c647eee60f7d16804ccae839dfae0a712cdac97b0e"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "github-actions-ci",
+      "type": "ci-cd",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "ci.yaml.tmpl",
+              "path": "templates/github-actions-ci/1.0.0/ci.yaml.tmpl",
+              "size": 3196,
+              "sha256": "2daff3c62a5fd0df2a18dbfe892745fb9db82e3368de47d5399fb656e536c4e3"
+            },
+            {
+              "name": "conjure.json",
+              "path": "templates/github-actions-ci/1.0.0/conjure.json",
+              "size": 1312,
+              "sha256": "9d91e1ba2a259f859d027d8f897f9b443dda2fd98582f78699894da346603a7c"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "gitlab-ci",
+      "type": "ci-cd",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/gitlab-ci/1.0.0/conjure.json",
+              "size": 1155,
+              "sha256": "515e0a2e765913356dc08f69fcb5a2522c31c7836267520e0c21cc1f5a15c9b1"
+            },
+            {
+              "name": "gitlab-ci.yml.tmpl",
+              "path": "templates/gitlab-ci/1.0.0/gitlab-ci.yml.tmpl",
+              "size": 1972,
+              "sha256": "ec77365df248ac14b916dbea2940f0a30782aa73f1c912be62425264a2dbe125"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "grafana-dashboard",
+      "type": "config",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/grafana-dashboard/1.0.0/conjure.json",
+              "size": 799,
+              "sha256": "49044fec975621ef61a70e41aaa7b5acaf3673864da1892b34aa668e36ef54e2"
+            },
+            {
+              "name": "dashboard.json.tmpl",
+              "path": "templates/grafana-dashboard/1.0.0/dashboard.json.tmpl",
+              "size": 2409,
+              "sha256": "7fafb2418d03fcae0e255aaa3f022f0d8fb4d6cb9adcd55f12b6d9534a656553"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "hashicorp-vault-config",
+      "type": "config",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/hashicorp-vault-config/1.0.0/conjure.json",
+              "size": 1358,
+              "sha256": "36ba8206f83449c29e76f252202acc2433a8e70c48b874a0a90349f1d7ecc181"
+            },
+            {
+              "name": "server.hcl.tmpl",
+              "path": "templates/hashicorp-vault-config/1.0.0/server.hcl.tmpl",
+              "size": 480,
+              "sha256": "c76660829a98da2b2f4b04a33d813362330336a5d9c109d9e9e3c9ce74007ccb"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "jenkinsfile",
+      "type": "ci-cd",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "Jenkinsfile.tmpl",
+              "path": "templates/jenkinsfile/1.0.0/Jenkinsfile.tmpl",
+              "size": 2772,
+              "sha256": "48131c834bdad072b5e678afad6af7332696f9cde1704009e3b54044d1addde5"
+            },
+            {
+              "name": "conjure.json",
+              "path": "templates/jenkinsfile/1.0.0/conjure.json",
+              "size": 1179,
+              "sha256": "1608014d65143bffe1e33c852a17404dc21e3671a85d33f6fd36b55be6bc9467"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "k8s-cert-manager",
+      "type": "kubernetes",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "certificate.yaml.tmpl",
+              "path": "templates/k8s-cert-manager/1.0.0/certificate.yaml.tmpl",
+              "size": 443,
+              "sha256": "66410153ec57f3f4bbf39b0318bcdc7897517d1bde19992c13039b78deb2770a"
+            },
+            {
+              "name": "conjure.json",
+              "path": "templates/k8s-cert-manager/1.0.0/conjure.json",
+              "size": 1627,
+              "sha256": "7a1d4da0534f7faefa1bcebd299a42593e3e2c3758c0000c0649f643c2f41ac3"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "k8s-configmap",
+      "type": "kubernetes",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "configmap.yaml.tmpl",
+              "path": "templates/k8s-configmap/1.0.0/configmap.yaml.tmpl",
+              "size": 575,
+              "sha256": "7c16c30ca00d85081f2827a4fd02120a6023da4d6460f2bdcfb2ef6cf31df8a4"
+            },
+            {
+              "name": "conjure.json",
+              "path": "templates/k8s-configmap/1.0.0/conjure.json",
+              "size": 1364,
+              "sha256": "27b317c35345ff873e37bacd659e2f4fdf07ea3a95ec862a4d424ee42cb7d43d"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "k8s-deployment",
+      "type": "kubernetes",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/k8s-deployment/1.0.0/conjure.json",
+              "size": 2022,
+              "sha256": "9617f2bb2f1bf6449aebb3af48cf1652bc9b12b2d8f61ae78a8e0b72cdd35f16"
+            },
+            {
+              "name": "deployment.yaml.tmpl",
+              "path": "templates/k8s-deployment/1.0.0/deployment.yaml.tmpl",
+              "size": 1419,
+              "sha256": "dad3c66742ed08b2014dc5a417a4c02950eb3175b4cb6e3653bc278746faf301"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "k8s-hpa",
+      "type": "kubernetes",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/k8s-hpa/1.0.0/conjure.json",
+              "size": 1399,
+              "sha256": "056750f49f498e6f104915d3ad072f76478914617fc35d0ec01d7807503d4842"
+            },
+            {
+              "name": "hpa.yaml.tmpl",
+              "path": "templates/k8s-hpa/1.0.0/hpa.yaml.tmpl",
+              "size": 1162,
+              "sha256": "b555a4d0e81818951a59f1836c734ce7f0792395050608dc4218776d7e6213ce"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "k8s-ingress-nginx",
+      "type": "kubernetes",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/k8s-ingress-nginx/1.0.0/conjure.json",
+              "size": 1746,
+              "sha256": "bb73e4815b49afab878ec9975a81209e72fb7a6da35c21ce43b3afdb7b74918f"
+            },
+            {
+              "name": "ingress.yaml.tmpl",
+              "path": "templates/k8s-ingress-nginx/1.0.0/ingress.yaml.tmpl",
+              "size": 1000,
+              "sha256": "c54e441e794490968a8a5286aa805cef8236589bf80253fcaa099f09a91a1d71"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "k8s-secret",
+      "type": "kubernetes",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/k8s-secret/1.0.0/conjure.json",
+              "size": 1246,
+              "sha256": "dbc384edeb919f482629c4a39fcf9c4f28a06778eeca04fb35989d68036a68eb"
+            },
+            {
+              "name": "secret.yaml.tmpl",
+              "path": "templates/k8s-secret/1.0.0/secret.yaml.tmpl",
+              "size": 274,
+              "sha256": "7ec3ae571a5f7bbc226f2db6c8223586a9be503755b0916fad89bacb0cc49b03"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "k8s-service",
+      "type": "kubernetes",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/k8s-service/1.0.0/conjure.json",
+              "size": 1077,
+              "sha256": "35165d15a31c617f17dfb1fb265f0e749c83fcb67d582a6f8299b7dcf8c75aa9"
+            },
+            {
+              "name": "service.yaml.tmpl",
+              "path": "templates/k8s-service/1.0.0/service.yaml.tmpl",
+              "size": 398,
+              "sha256": "b246459a11e2fec98ab0599e3feb9a020337c7c3fb4687b83224859c167f80df"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "minecraft-server",
+      "type": "gaming",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/minecraft-server/1.0.0/conjure.json",
+              "size": 1631,
+              "sha256": "bbb770c7172c422b0d77d7ad125c3b9bd2069f93130bec6e88ce9de25e6c642e"
+            },
+            {
+              "name": "server.properties.tmpl",
+              "path": "templates/minecraft-server/1.0.0/server.properties.tmpl",
+              "size": 1044,
+              "sha256": "e7e3bcae06eb00cd00ebdd712af66a791082a3fec158ce43cca11a44a47483c0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "nginx-config",
+      "type": "config",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/nginx-config/1.0.0/conjure.json",
+              "size": 1474,
+              "sha256": "446e9f50703af232d6c2b41614dcaf0684e5273a9b0a54f9d096e70b10da88ac"
+            },
+            {
+              "name": "nginx.conf.tmpl",
+              "path": "templates/nginx-config/1.0.0/nginx.conf.tmpl",
+              "size": 1540,
+              "sha256": "efd9faf228222cdf05f7e68cb9366ee78a7d288fee04cf2436feb97ab31895d1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "palworld-server",
+      "type": "gaming",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "PalWorldSettings.ini.tmpl",
+              "path": "templates/palworld-server/1.0.0/PalWorldSettings.ini.tmpl",
+              "size": 1925,
+              "sha256": "d036f6aab3089d47d6a0eb6258a36228c76a9fef7db02166b8dc4caeed2ce38f"
+            },
+            {
+              "name": "conjure.json",
+              "path": "templates/palworld-server/1.0.0/conjure.json",
+              "size": 1977,
+              "sha256": "21471c78ef05f330c97a9811d81e4b531b8a11f0139a5ebd8b7858aee16991ec"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "postgresql-config",
+      "type": "config",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/postgresql-config/1.0.0/conjure.json",
+              "size": 1378,
+              "sha256": "6d0db73ad283fa69a14322e4d75a55183fd1a9e7e3a6c67b09d9729fadfb63c8"
+            },
+            {
+              "name": "postgresql.conf.tmpl",
+              "path": "templates/postgresql-config/1.0.0/postgresql.conf.tmpl",
+              "size": 1308,
+              "sha256": "57cd38858f7881f7cc8549e2978f827325205c0ef5ed7126fa3f2066badba00e"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "prometheus-config",
+      "type": "config",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/prometheus-config/1.0.0/conjure.json",
+              "size": 1303,
+              "sha256": "96d470cda593de1d660c4978912bb868e94a4bba578bcaed69190a8593b01824"
+            },
+            {
+              "name": "prometheus.yml.tmpl",
+              "path": "templates/prometheus-config/1.0.0/prometheus.yml.tmpl",
+              "size": 842,
+              "sha256": "47ab5c47ca48d2641c8f1c6c3187906eb91d80cc3b5e94503b2c9ba8439d12fd"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "redis-config",
+      "type": "config",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/redis-config/1.0.0/conjure.json",
+              "size": 1223,
+              "sha256": "cd39d18b1d5842bc89bcec1d574842a09235f9678749558289848982e8558a28"
+            },
+            {
+              "name": "redis.conf.tmpl",
+              "path": "templates/redis-config/1.0.0/redis.conf.tmpl",
+              "size": 784,
+              "sha256": "973fcce6a18f80dce0bb12b10f83ce9e70951bfbb94c5569c619734dab4ca1f2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "systemd-service",
+      "type": "system",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/systemd-service/1.0.0/conjure.json",
+              "size": 1473,
+              "sha256": "26a99302c61641be140782bc4926f8017c0bfce096339b5803eb6a2e9fc70557"
+            },
+            {
+              "name": "service.service.tmpl",
+              "path": "templates/systemd-service/1.0.0/service.service.tmpl",
+              "size": 676,
+              "sha256": "3b4e10b0fcbe610d49f7c14fa941ec0c6b8376e2de83ae98323eafd32bf75e7a"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "terraform-aws-ec2",
+      "type": "terraform",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/terraform-aws-ec2/1.0.0/conjure.json",
+              "size": 1610,
+              "sha256": "84961059493e9dca1c29c2fcf7281500cec7a7a855aa62267e77082366a4bbb1"
+            },
+            {
+              "name": "main.tf.tmpl",
+              "path": "templates/terraform-aws-ec2/1.0.0/main.tf.tmpl",
+              "size": 2289,
+              "sha256": "16510777d37cccdecd10730eb933d3ca771991cf04f148e71a53082e89bcd9a8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "terraform-azure-vm",
+      "type": "terraform",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/terraform-azure-vm/1.0.0/conjure.json",
+              "size": 1459,
+              "sha256": "143fefb319963a4b7ab7275b78f4923431851ce1a5860cefa33e53b1f840d271"
+            },
+            {
+              "name": "main.tf.tmpl",
+              "path": "templates/terraform-azure-vm/1.0.0/main.tf.tmpl",
+              "size": 4670,
+              "sha256": "56b846c62a5fe772fd97e575d77fccc8c40e67eee8549f494e158e960aca5c79"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "terraform-gcp-vm",
+      "type": "terraform",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/terraform-gcp-vm/1.0.0/conjure.json",
+              "size": 1592,
+              "sha256": "2a9a3e99ffe68bc1c74c573f3847ff0492ecc61f8c3c679ba885f63a422ab198"
+            },
+            {
+              "name": "main.tf.tmpl",
+              "path": "templates/terraform-gcp-vm/1.0.0/main.tf.tmpl",
+              "size": 2437,
+              "sha256": "5fa72de7d788d5be895019464488e588552d2cc87780a949c1f60b0f7917ae73"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "bundles": [
+    {
+      "name": "docker-stack",
+      "type": "",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "Dockerfile.tmpl",
+              "path": "bundles/docker-stack/1.0.0/Dockerfile.tmpl",
+              "size": 535,
+              "sha256": "f4460a61275d565d87654f956aaa4cc923a4e6f7015fed83dad32e26609a7286"
+            },
+            {
+              "name": "conjure.json",
+              "path": "bundles/docker-stack/1.0.0/conjure.json",
+              "size": 1036,
+              "sha256": "ae922a6e6ba321c4247fd1c61a6c2b4d6cff6b50241d451a0b9844594fc9f917"
+            },
+            {
+              "name": "docker-compose.yml.tmpl",
+              "path": "bundles/docker-stack/1.0.0/docker-compose.yml.tmpl",
+              "size": 1324,
+              "sha256": "f0e1dfa0a849d973c8902439d96f36dba1454ec186ec268ab91ba5af553361eb"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "k8s-microservice",
+      "type": "",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "configmap.yaml.tmpl",
+              "path": "bundles/k8s-microservice/1.0.0/configmap.yaml.tmpl",
+              "size": 252,
+              "sha256": "b2a429b55c9cf3f0962ca25d956c2bce84ef1dde0f260f3efd7d0e79d6836636"
+            },
+            {
+              "name": "conjure.json",
+              "path": "bundles/k8s-microservice/1.0.0/conjure.json",
+              "size": 1486,
+              "sha256": "da2e9e17d4cee89e5a13c9e6cf71561fa533be16c669e08f48071d9948dd8a1f"
+            },
+            {
+              "name": "deployment.yaml.tmpl",
+              "path": "bundles/k8s-microservice/1.0.0/deployment.yaml.tmpl",
+              "size": 1143,
+              "sha256": "fd1de39d52754a2c56285f445bc654b07cde9edf5fa066595d221cf0500ab579"
+            },
+            {
+              "name": "service.yaml.tmpl",
+              "path": "bundles/k8s-microservice/1.0.0/service.yaml.tmpl",
+              "size": 395,
+              "sha256": "0c5e4ca791c2964da8c6d4b7738c6265c4603aca53b34c6760e4eb3799783e4f"
+            },
+            {
+              "name": "servicemonitor.yaml.tmpl",
+              "path": "bundles/k8s-microservice/1.0.0/servicemonitor.yaml.tmpl",
+              "size": 325,
+              "sha256": "46a84f315adb73fbdb100c956adb5458cd822f7c80172e858c1fb67e8187a49c"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "k8s-web-app",
+      "type": "",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "bundles/k8s-web-app/1.0.0/conjure.json",
+              "size": 1489,
+              "sha256": "4d9f402107887180f63fa46f0fc15993829483e78dcb40e715623d7a8925caef"
+            },
+            {
+              "name": "deployment.yaml.tmpl",
+              "path": "bundles/k8s-web-app/1.0.0/deployment.yaml.tmpl",
+              "size": 987,
+              "sha256": "63aceff2d400340903acc68f4044cb923d9c3d9bb04cd7c17c4d2d947a863a7b"
+            },
+            {
+              "name": "ingress.yaml.tmpl",
+              "path": "bundles/k8s-web-app/1.0.0/ingress.yaml.tmpl",
+              "size": 592,
+              "sha256": "3a2840ef19b87f3d2937e78cbe08a6e27751fa5599bed2858a8b4b41dd11e92e"
+            },
+            {
+              "name": "service.yaml.tmpl",
+              "path": "bundles/k8s-web-app/1.0.0/service.yaml.tmpl",
+              "size": 296,
+              "sha256": "9c10786183e29392f26a7398318ae2e07871f208e3d916a2cf6ca4af202c18e6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "terraform-aws-vpc",
+      "type": "",
+      "description": "",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "bundles/terraform-aws-vpc/1.0.0/conjure.json",
+              "size": 1073,
+              "sha256": "4ce5c5ef5ecc83aafd9c46c09f7cd3c20b8aa7b0c6b30110ddb9f2fd5f3a9152"
+            },
+            {
+              "name": "main.tf.tmpl",
+              "path": "bundles/terraform-aws-vpc/1.0.0/main.tf.tmpl",
+              "size": 3634,
+              "sha256": "de698e4baf3169365abec1c9ef3c37b4d1a96ba5c1135371d829a67ecc128bf3"
+            },
+            {
+              "name": "outputs.tf.tmpl",
+              "path": "bundles/terraform-aws-vpc/1.0.0/outputs.tf.tmpl",
+              "size": 832,
+              "sha256": "d9ca2a3f4305ca0aee0a22fea427b6d4746a6a12ca582191cf0c1818916582af"
+            },
+            {
+              "name": "variables.tf.tmpl",
+              "path": "bundles/terraform-aws-vpc/1.0.0/variables.tf.tmpl",
+              "size": 467,
+              "sha256": "4498a76e16698a053a95e62ba3ef3c05ca29851bc173a81bc56b6fdad94eee16"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

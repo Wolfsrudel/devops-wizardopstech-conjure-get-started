@@ -1,0 +1,56 @@
+{
+  "schema_version": "v1",
+  "template_name": "server.hcl",
+  "template_description": "HashiCorp Vault server configuration",
+  "template_type": "config",
+  "variables": [
+    {
+      "name": "cluster_name",
+      "description": "Vault cluster name",
+      "type": "string",
+      "default": "vault-cluster"
+    },
+    {
+      "name": "api_addr",
+      "description": "API address",
+      "type": "string",
+      "default": "http://127.0.0.1:8200"
+    },
+    {
+      "name": "storage_type",
+      "description": "Storage backend (raft, consul, file)",
+      "type": "string",
+      "default": "raft"
+    },
+    {
+      "name": "storage_path",
+      "description": "Storage data path",
+      "type": "string",
+      "default": "/vault/data"
+    },
+    {
+      "name": "enable_ui",
+      "description": "Enable web UI",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "enable_tls",
+      "description": "Enable TLS",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "tls_cert_file",
+      "description": "TLS certificate file path",
+      "type": "string",
+      "default": "/vault/tls/tls.crt"
+    },
+    {
+      "name": "tls_key_file",
+      "description": "TLS key file path",
+      "type": "string",
+      "default": "/vault/tls/tls.key"
+    }
+  ]
+}

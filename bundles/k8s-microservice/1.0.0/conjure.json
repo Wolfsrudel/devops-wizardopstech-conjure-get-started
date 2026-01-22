@@ -1,0 +1,67 @@
+{
+  "schema_version": "v1",
+  "bundle_name": "k8s-microservice",
+  "description": "Kubernetes microservice with observability (Deployment + Service + ConfigMap + ServiceMonitor)",
+  "variables": [
+    {
+      "name": "app_name",
+      "description": "Application name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "namespace",
+      "description": "Kubernetes namespace",
+      "type": "string",
+      "default": "default"
+    },
+    {
+      "name": "image",
+      "description": "Container image",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "replicas",
+      "description": "Number of replicas",
+      "type": "int",
+      "default": "3"
+    },
+    {
+      "name": "container_port",
+      "description": "Container port",
+      "type": "int",
+      "default": "8080"
+    },
+    {
+      "name": "log_level",
+      "description": "Log level",
+      "type": "string",
+      "default": "info"
+    },
+    {
+      "name": "enable_metrics",
+      "description": "Enable Prometheus metrics",
+      "type": "bool",
+      "default": "true"
+    }
+  ],
+  "templates": [
+    {
+      "name": "deployment",
+      "output": "deployment.yaml"
+    },
+    {
+      "name": "service",
+      "output": "service.yaml"
+    },
+    {
+      "name": "configmap",
+      "output": "configmap.yaml"
+    },
+    {
+      "name": "servicemonitor",
+      "output": "servicemonitor.yaml"
+    }
+  ]
+}

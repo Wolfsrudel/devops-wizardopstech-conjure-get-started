@@ -1,0 +1,6 @@
+app_name: my-web-app
+app_port: 3000
+include_database: true
+include_redis: true
+postgres_version: 15-alpine
+redis_version: 7-alpine

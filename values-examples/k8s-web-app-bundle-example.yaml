@@ -1,0 +1,8 @@
+app_name: my-web-app
+namespace: production
+image: myregistry/web-app:v2.0.0
+replicas: 3
+container_port: 8080
+hostname: app.example.com
+enable_tls: true
+tls_secret_name: app-example-com-tls

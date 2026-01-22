@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{.config_name}}
+  namespace: {{.namespace}}
+  labels:
+    app: {{.app_name}}
+data:
+  LOG_LEVEL: "{{.log_level}}"
+  APP_PORT: "{{.app_port}}"
+  APP_ENV: "{{.app_env}}"
+  MAX_CONNECTIONS: "{{.max_connections}}"
+  CACHE_TTL: "{{.cache_ttl}}"
+  app.conf: |
+    # Application configuration file
+    [server]
+    port = {{.app_port}}
+    environment = {{.app_env}}
+
+    [logging]
+    level = {{.log_level}}
+
+    [database]
+    max_connections = {{.max_connections}}
+
+    [cache]
+    ttl = {{.cache_ttl}}

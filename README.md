@@ -1,210 +1,189 @@
 # Conjure Get Started
 
-Production-ready templates and bundles for Conjure. Clone this repository and start generating Kubernetes manifests, Docker configurations, and more in seconds.
+Example eady templates and bundles for Conjure. Clone this repository and start generating Kubernetes manifests, Terraform configurations, configuration files, and more.
 
 ## Quick Start
 
+Configure Conjure to use this repository using one of three methods:
+
+### Option 1: Global Configuration
+
+Configure Conjure to use this repository for all projects:
+
 ```bash
-# Clone this repository
-git clone https://github.com/YOUR_ORG/conjure-get-started.git
+# Clone the repository
+git clone https://github.com/WizardOpsTech/conjure-get-started.git
+cd conjure-get-started
 
-# Set your Conjure templates directory to point here
-export CONJURE_TEMPLATES_DIR=$(pwd)/conjure-get-started
+# Create global config
+cat > ~/.conjure.yaml << EOF
+templates_dir: $(pwd)
+EOF
 
-# Use a template
-conjure template deployment.yaml -o deployment.yaml -f examples/deployment-values.yaml
-
-# Or apply a complete bundle
-conjure bundle web-app -o ./output -f examples/web-app-values.yaml
+# Verify configuration
+conjure list templates
 ```
 
-## What's Inside
+### Option 2: Environment Variable
+
+Set a temporary configuration using environment variables:
+
+```bash
+# Clone the repository
+git clone https://github.com/WizardOpsTech/conjure-get-started.git
+cd conjure-get-started
+
+# Set environment variable
+export CONJURE_TEMPLATES_DIR=$(pwd)
+
+# List available templates
+conjure list templates
+```
+
+### Option 3: Project-Local Configuration
+
+Create a project-specific configuration:
+
+```bash
+# Clone the repository
+git clone https://github.com/WizardOpsTech/conjure-get-started.git
+
+# Create project config
+cat > conjure.yaml << EOF
+templates_dir: ./conjure-get-started
+EOF
+
+# Use with --config flag
+conjure list templates --config conjure.yaml
+conjure template k8s-deployment -o deployment.yaml --config conjure.yaml
+```
+
+## Repository Contents
+
+This repository contains 27 templates and 4 bundles organized by category.
 
 ### Templates
 
-Individual reusable templates stored in the `templates/` directory. Each template consists of:
-- A `.tmpl` file containing the template content
-- A `.json` file containing metadata and variable definitions
+All templates follow the versioned directory structure: `templates/<name>/<version>/`
 
-**Available Templates:**
-- `deployment.yaml` - Kubernetes Deployment with health checks and resource limits
-- `service.yaml` - Kubernetes Service (ClusterIP, NodePort, LoadBalancer)
-- `docker-compose.yaml` - Docker Compose with optional database and Redis
+#### Kubernetes (8 Templates)
+
+| Template | Type | Description | Output |
+|----------|------|-------------|--------|
+| `k8s-deployment` | kubernetes | Deployment with health checks and resource limits | deployment.yaml |
+| `k8s-service` | kubernetes | Service (ClusterIP, NodePort, LoadBalancer) | service.yaml |
+| `k8s-ingress-nginx` | kubernetes | NGINX Ingress with TLS, CORS, rate limiting | ingress.yaml |
+| `k8s-cert-manager` | kubernetes | Cert-Manager Certificate for automated TLS | certificate.yaml |
+| `k8s-configmap` | kubernetes | ConfigMap for application configuration | configmap.yaml |
+| `k8s-secret` | kubernetes | Secret with Base64 encoding | secret.yaml |
+| `k8s-hpa` | kubernetes | Horizontal Pod Autoscaler | hpa.yaml |
+| `argocd-application` | kubernetes | ArgoCD Application for GitOps | application.yaml |
+
+#### Cloud Infrastructure (3 Templates)
+
+| Template | Type | Description | Output |
+|----------|------|-------------|--------|
+| `terraform-aws-ec2` | terraform | AWS EC2 instance with VPC and security groups | main.tf |
+| `terraform-azure-vm` | terraform | Azure VM with networking | main.tf |
+| `terraform-gcp-vm` | terraform | GCP Compute Engine with firewall | main.tf |
+
+#### CI/CD & Containers (5 Templates)
+
+| Template | Type | Description | Output |
+|----------|------|-------------|--------|
+| `github-actions-ci` | ci-cd | GitHub Actions workflow | ci.yaml |
+| `gitlab-ci` | ci-cd | GitLab CI pipeline | .gitlab-ci.yaml |
+| `jenkinsfile` | ci-cd | Jenkins declarative pipeline | Jenkinsfile |
+| `dockerfile` | docker | Multi-stage Dockerfile | Dockerfile |
+| `docker-compose` | docker | Docker Compose with PostgreSQL/Redis | docker-compose.yaml |
+
+#### Application Configuration (6 Templates)
+
+| Template | Type | Description | Output |
+|----------|------|-------------|--------|
+| `hashicorp-vault-config` | config | HashiCorp Vault server configuration | vault.hcl |
+| `nginx-config` | config | NGINX reverse proxy with SSL/TLS | nginx.conf |
+| `prometheus-config` | config | Prometheus scrape configuration | prometheus.yaml |
+| `grafana-dashboard` | config | Grafana dashboard JSON | dashboard.json |
+| `redis-config` | config | Redis server configuration | redis.conf |
+| `postgresql-config` | config | PostgreSQL tuning and settings | postgresql.conf |
+
+#### System & Utilities (3 Templates)
+
+| Template | Type | Description | Output |
+|----------|------|-------------|--------|
+| `systemd-service` | system | Linux systemd service unit | service |
+| `env-file` | system | Environment variables file | .env |
+| `cron-job` | system | Crontab entry for scheduled tasks | crontab |
+
+#### Gaming (2 Templates)
+
+| Template | Type | Description | Output |
+|----------|------|-------------|--------|
+| `minecraft-server` | gaming | Minecraft server configuration | server.properties |
+| `palworld-server` | gaming | Palworld dedicated server | PalWorldSettings.ini |
 
 ### Bundles
 
-Complete solution packages in the `bundles/` directory. Each bundle contains:
-- A `conjure.json` file defining bundle metadata and variables
-- Multiple `.tmpl` files that are rendered together
+Complete solution packages that generate multiple related files:
 
-**Available Bundles:**
-- `web-app` - Complete web application (Deployment, Service, Docker Compose)
-
-### Examples
-
-Example values files in the `examples/` directory showing how to configure templates and bundles.
-
-## Template Structure
-
-Templates follow this naming pattern:
-- Template file: `{name}.{extension}.tmpl`
-- Metadata file: `{name}.{extension}.json`
-
-Example:
-```
-templates/
-├── deployment.yaml.tmpl    # Template content
-└── deployment.yaml.json    # Variable definitions
-```
-
-When using templates, reference them by name without the `.tmpl` extension:
-```bash
-conjure template deployment.yaml -o my-deployment.yaml
-```
-
-## Bundle Structure
-
-Bundles are directories containing:
-- `conjure.json` - Bundle metadata
-- `*.tmpl` files - Template files
-
-Example:
-```
-bundles/
-└── web-app/
-    ├── conjure.json              # Bundle metadata
-    ├── deployment.yaml.tmpl      # Deployment template
-    ├── service.yaml.tmpl         # Service template
-    └── docker-compose.yaml.tmpl  # Docker Compose template
-```
-
-The `conjure.json` file defines:
-```json
-{
-  "bundle_type": "kubernetes",
-  "bundle_name": "web-app",
-  "bundle_description": "Description here",
-  "shared_variables": [
-    {
-      "name": "app_name",
-      "description": "Application name",
-      "type": "string",
-      "required": true,
-      "default": ""
-    }
-  ],
-  "template_variables": {
-    "deployment.yaml.tmpl": [
-      {
-        "name": "replicas",
-        "description": "Number of replicas",
-        "type": "int",
-        "required": false,
-        "default": "3"
-      }
-    ]
-  }
-}
-```
+| Bundle | Type | Description | Generates |
+|--------|------|-------------|-----------|
+| `k8s-web-app` | kubernetes | Complete web application stack | Deployment, Service, Ingress |
+| `k8s-microservice` | kubernetes | Microservice with observability | Deployment, Service, ConfigMap, ServiceMonitor |
+| `docker-stack` | docker | Complete development environment | Docker Compose, Dockerfile |
+| `terraform-aws-vpc` | terraform | Complete AWS VPC infrastructure | VPC, Subnets, IGW, Route Tables |
 
 ## Usage Examples
 
-### Using Individual Templates
+### Templates
 
-Generate a Kubernetes deployment:
-
+**Interactive mode** (prompts for required variables):
 ```bash
-conjure template deployment.yaml -o deployment.yaml \
+conjure template k8s-deployment -o deployment.yaml
+```
+
+**Non-interactive with variables**:
+```bash
+conjure template k8s-deployment -o deployment.yaml \
   --var app_name=my-api \
   --var image=my-api:1.0.0 \
   --var replicas=3
 ```
 
-Generate with a values file:
-
+**Using a values file**:
 ```bash
-conjure template deployment.yaml -o deployment.yaml \
-  -f examples/deployment-values.yaml
+conjure template k8s-deployment -o deployment.yaml \
+  -f values-examples/k8s-deployment-example.yaml
 ```
 
-### Using Bundles
-
-Deploy a complete web application:
-
+**Filter by type**:
 ```bash
-conjure bundle web-app -o ./k8s -f examples/web-app-values.yaml
+conjure list templates --type kubernetes
+conjure list templates --type terraform
+conjure list templates --type ci-cd
 ```
 
-This generates:
-- `k8s/deployment.yaml` - Kubernetes Deployment
-- `k8s/service.yaml` - Kubernetes Service
-- `k8s/docker-compose.yaml` - Docker Compose configuration
+**Specify version**:
+```bash
+conjure template k8s-deployment --version 1.0.0 -o deployment.yaml
+```
 
-## Variable Types
+### Bundles
 
-Templates and bundles support these variable types:
-- `string` - Text values
-- `int` - Integer numbers
-- `bool` - Boolean (true/false)
+**Interactive mode**:
+```bash
+conjure bundle k8s-web-app -o ./output
+```
 
-## Creating Your Own
+**Using a values file**:
+```bash
+conjure bundle k8s-web-app -o ./k8s \
+  -f values-examples/k8s-web-app-bundle-example.yaml
+```
 
-### Custom Template
-
-1. Create template file `templates/mytemplate.yaml.tmpl`:
-   ```yaml
-   apiVersion: v1
-   kind: ConfigMap
-   metadata:
-     name: {{.name}}
-   data:
-     key: {{.value}}
-   ```
-
-2. Create metadata file `templates/mytemplate.yaml.json`:
-   ```json
-   {
-     "template_name": "mytemplate.yaml",
-     "description": "My custom template",
-     "variables": [
-       {
-         "name": "name",
-         "description": "ConfigMap name",
-         "type": "string",
-         "required": true,
-         "default": ""
-       },
-       {
-         "name": "value",
-         "description": "Configuration value",
-         "type": "string",
-         "required": false,
-         "default": "default-value"
-       }
-     ]
-   }
-   ```
-
-### Custom Bundle
-
-1. Create bundle directory: `bundles/my-bundle/`
-
-2. Create `conjure.json` with bundle metadata
-
-3. Add `.tmpl` files for each template in the bundle
-
-See existing bundles for examples.
-
-## Contributing
-
-Contributions welcome! Please:
-
-1. Follow existing template patterns
-2. Include proper metadata in `.json` files
-3. Provide example values files
-4. Test your templates/bundles before submitting
-5. Document all variables
-
-## License
-
-MIT License - see LICENSE file for details
+**Filter bundles by type**:
+```bash
+conjure list bundles --type kubernetes
+conjure list bundles --type terraform
+```

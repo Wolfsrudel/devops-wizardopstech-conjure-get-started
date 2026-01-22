@@ -1,0 +1,10 @@
+server_name: My Awesome Minecraft Server
+server_port: 25565
+gamemode: survival
+difficulty: hard
+max_players: 50
+view_distance: 12
+enable_whitelist: true
+enable_pvp: true
+allow_flight: false
+spawn_protection: 32

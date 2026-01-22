@@ -1,0 +1,47 @@
+{
+  "schema_version": "v1",
+  "bundle_name": "docker-stack",
+  "description": "Complete Docker development stack (Docker Compose + Dockerfile)",
+  "variables": [
+    {
+      "name": "app_name",
+      "description": "Application name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "app_port",
+      "description": "Application port",
+      "type": "int",
+      "default": "8080"
+    },
+    {
+      "name": "node_version",
+      "description": "Node.js version",
+      "type": "string",
+      "default": "20-alpine"
+    },
+    {
+      "name": "include_database",
+      "description": "Include PostgreSQL",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "include_redis",
+      "description": "Include Redis",
+      "type": "bool",
+      "default": "true"
+    }
+  ],
+  "templates": [
+    {
+      "name": "docker-compose",
+      "output": "docker-compose.yml"
+    },
+    {
+      "name": "dockerfile",
+      "output": "Dockerfile"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": "v1",
+  "template_name": "configmap.yaml",
+  "template_description": "Kubernetes ConfigMap for application configuration",
+  "template_type": "kubernetes",
+  "variables": [
+    {
+      "name": "app_name",
+      "description": "Name of the application",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "namespace",
+      "description": "Kubernetes namespace",
+      "type": "string",
+      "default": "default"
+    },
+    {
+      "name": "config_name",
+      "description": "ConfigMap name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "log_level",
+      "description": "Application log level",
+      "type": "string",
+      "default": "info"
+    },
+    {
+      "name": "app_port",
+      "description": "Application port",
+      "type": "string",
+      "default": "8080"
+    },
+    {
+      "name": "app_env",
+      "description": "Application environment (development, staging, production)",
+      "type": "string",
+      "default": "production"
+    },
+    {
+      "name": "max_connections",
+      "description": "Maximum database connections",
+      "type": "string",
+      "default": "100"
+    },
+    {
+      "name": "cache_ttl",
+      "description": "Cache TTL in seconds",
+      "type": "string",
+      "default": "3600"
+    }
+  ]
+}

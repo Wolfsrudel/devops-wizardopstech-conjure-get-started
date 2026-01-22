@@ -1,0 +1,90 @@
+image: node:{{.node_version}}
+
+stages:
+{{if .run_linter}}  - lint
+{{end}}{{if .run_tests}}  - test
+{{end}}  - build
+{{if .build_docker_image}}  - docker
+{{end}}
+variables:
+  NODE_ENV: "production"
+{{if .build_docker_image}}  DOCKER_REGISTRY: {{.docker_registry}}
+  DOCKER_IMAGE: {{.docker_image_name}}
+{{end}}
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules/
+    - .npm/
+
+before_script:
+  - npm ci --cache .npm --prefer-offline
+{{if .run_linter}}
+
+lint:
+  stage: lint
+  script:
+    - npm run lint
+  only:
+    - merge_requests
+    - main
+    - develop
+{{end}}{{if .run_tests}}
+
+test:
+  stage: test
+  script:
+    - npm test
+  coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
+  artifacts:
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: coverage/cobertura-coverage.xml
+      junit: junit.xml
+    paths:
+      - coverage/
+    expire_in: 30 days
+  only:
+    - merge_requests
+    - main
+    - develop
+{{end}}
+
+build:
+  stage: build
+  script:
+    - npm run build
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 7 days
+  only:
+    - main
+    - develop
+    - tags
+{{if .build_docker_image}}
+
+docker:build:
+  stage: docker
+  image: docker:24
+  services:
+    - docker:24-dind
+  variables:
+    DOCKER_TLS_CERTDIR: "/certs"
+  before_script:
+    - echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY
+  script:
+    - docker build -t $DOCKER_REGISTRY/$DOCKER_IMAGE:$CI_COMMIT_SHORT_SHA .
+    - docker build -t $DOCKER_REGISTRY/$DOCKER_IMAGE:$CI_COMMIT_REF_SLUG .
+    - docker build -t $DOCKER_REGISTRY/$DOCKER_IMAGE:latest .
+    - docker push $DOCKER_REGISTRY/$DOCKER_IMAGE:$CI_COMMIT_SHORT_SHA
+    - docker push $DOCKER_REGISTRY/$DOCKER_IMAGE:$CI_COMMIT_REF_SLUG
+    - docker push $DOCKER_REGISTRY/$DOCKER_IMAGE:latest
+  only:
+    - main
+    - develop
+    - tags
+  dependencies:
+    - build
+{{end}}

@@ -1,0 +1,51 @@
+{
+  "schema_version": "v1",
+  "bundle_name": "terraform-aws-vpc",
+  "description": "Complete AWS VPC with subnets, IGW, and route tables",
+  "variables": [
+    {
+      "name": "vpc_name",
+      "description": "VPC name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "region",
+      "description": "AWS region",
+      "type": "string",
+      "default": "us-east-1"
+    },
+    {
+      "name": "vpc_cidr",
+      "description": "VPC CIDR block",
+      "type": "string",
+      "default": "10.0.0.0/16"
+    },
+    {
+      "name": "enable_nat_gateway",
+      "description": "Enable NAT Gateway",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "environment",
+      "description": "Environment tag",
+      "type": "string",
+      "default": "dev"
+    }
+  ],
+  "templates": [
+    {
+      "name": "main",
+      "output": "main.tf"
+    },
+    {
+      "name": "variables",
+      "output": "variables.tf"
+    },
+    {
+      "name": "outputs",
+      "output": "outputs.tf"
+    }
+  ]
+}

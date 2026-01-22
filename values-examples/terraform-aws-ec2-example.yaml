@@ -1,0 +1,10 @@
+instance_name: web-server-01
+instance_type: t3.small
+ami_id: ami-0c02fb55b3b8c0e6f
+region: us-east-1
+vpc_id: vpc-12345678
+subnet_id: subnet-12345678
+key_name: my-ssh-key
+root_volume_size: 30
+enable_public_ip: true
+environment: production

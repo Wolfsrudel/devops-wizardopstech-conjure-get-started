@@ -1,0 +1,62 @@
+{
+  "schema_version": "v1",
+  "template_name": "application.yaml",
+  "template_description": "ArgoCD Application manifest for GitOps deployments",
+  "template_type": "kubernetes",
+  "variables": [
+    {
+      "name": "app_name",
+      "description": "Application name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "namespace",
+      "description": "Target namespace for deployment",
+      "type": "string",
+      "default": "default"
+    },
+    {
+      "name": "project",
+      "description": "ArgoCD project name",
+      "type": "string",
+      "default": "default"
+    },
+    {
+      "name": "repo_url",
+      "description": "Git repository URL",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "target_revision",
+      "description": "Git branch, tag, or commit",
+      "type": "string",
+      "default": "main"
+    },
+    {
+      "name": "path",
+      "description": "Path to manifests in repository",
+      "type": "string",
+      "default": "."
+    },
+    {
+      "name": "auto_sync",
+      "description": "Enable automatic sync",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "self_heal",
+      "description": "Enable self-healing",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "prune",
+      "description": "Enable automatic pruning",
+      "type": "bool",
+      "default": "false"
+    }
+  ]
+}

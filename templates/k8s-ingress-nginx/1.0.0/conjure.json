@@ -1,0 +1,74 @@
+{
+  "schema_version": "v1",
+  "template_name": "ingress.yaml",
+  "template_description": "NGINX Ingress manifest with TLS support",
+  "template_type": "kubernetes",
+  "variables": [
+    {
+      "name": "app_name",
+      "description": "Name of the application",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "namespace",
+      "description": "Kubernetes namespace",
+      "type": "string",
+      "default": "default"
+    },
+    {
+      "name": "hostname",
+      "description": "Ingress hostname (e.g., app.example.com)",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "service_name",
+      "description": "Backend service name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "service_port",
+      "description": "Backend service port",
+      "type": "int",
+      "default": "80"
+    },
+    {
+      "name": "enable_tls",
+      "description": "Enable TLS/HTTPS",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "tls_secret_name",
+      "description": "TLS secret name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "ingress_class",
+      "description": "Ingress class name",
+      "type": "string",
+      "default": "nginx"
+    },
+    {
+      "name": "enable_cors",
+      "description": "Enable CORS",
+      "type": "bool",
+      "default": "false"
+    },
+    {
+      "name": "enable_rate_limiting",
+      "description": "Enable rate limiting",
+      "type": "bool",
+      "default": "false"
+    },
+    {
+      "name": "rate_limit",
+      "description": "Rate limit (requests per second)",
+      "type": "string",
+      "default": "100"
+    }
+  ]
+}

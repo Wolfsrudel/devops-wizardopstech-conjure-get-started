@@ -1,0 +1,44 @@
+{
+  "schema_version": "v1",
+  "template_name": "Dockerfile",
+  "template_description": "Multi-stage Dockerfile for Node.js applications",
+  "template_type": "docker",
+  "variables": [
+    {
+      "name": "app_name",
+      "description": "Application name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "node_version",
+      "description": "Node.js version",
+      "type": "string",
+      "default": "20-alpine"
+    },
+    {
+      "name": "app_port",
+      "description": "Application port",
+      "type": "int",
+      "default": "8080"
+    },
+    {
+      "name": "working_dir",
+      "description": "Working directory in container",
+      "type": "string",
+      "default": "/app"
+    },
+    {
+      "name": "enable_healthcheck",
+      "description": "Enable Docker healthcheck",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "healthcheck_path",
+      "description": "Healthcheck endpoint path",
+      "type": "string",
+      "default": "/health"
+    }
+  ]
+}

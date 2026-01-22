@@ -1,0 +1,62 @@
+{
+  "schema_version": "v1",
+  "template_name": "certificate.yaml",
+  "template_description": "Cert-Manager Certificate CRD for TLS certificate automation",
+  "template_type": "kubernetes",
+  "variables": [
+    {
+      "name": "cert_name",
+      "description": "Certificate name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "namespace",
+      "description": "Kubernetes namespace",
+      "type": "string",
+      "default": "default"
+    },
+    {
+      "name": "secret_name",
+      "description": "Secret name to store certificate",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "issuer_name",
+      "description": "Cert-Manager Issuer or ClusterIssuer name",
+      "type": "string",
+      "default": "letsencrypt-prod"
+    },
+    {
+      "name": "issuer_kind",
+      "description": "Issuer kind (Issuer or ClusterIssuer)",
+      "type": "string",
+      "default": "ClusterIssuer"
+    },
+    {
+      "name": "common_name",
+      "description": "Certificate common name (primary domain)",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "dns_names",
+      "description": "Additional DNS names (comma-separated)",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "duration",
+      "description": "Certificate duration (e.g., 2160h for 90 days)",
+      "type": "string",
+      "default": "2160h"
+    },
+    {
+      "name": "renew_before",
+      "description": "Renew before expiration (e.g., 720h for 30 days)",
+      "type": "string",
+      "default": "720h"
+    }
+  ]
+}

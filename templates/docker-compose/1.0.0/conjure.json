@@ -1,0 +1,44 @@
+{
+  "schema_version": "v1",
+  "template_name": "docker-compose.yaml",
+  "template_description": "Docker Compose configuration for local development",
+  "template_type": "docker",
+  "variables": [
+    {
+      "name": "app_name",
+      "description": "Application name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "app_port",
+      "description": "Application port",
+      "type": "int",
+      "default": "8080"
+    },
+    {
+      "name": "include_database",
+      "description": "Include PostgreSQL database",
+      "type": "bool",
+      "default": "true"
+    },
+    {
+      "name": "include_redis",
+      "description": "Include Redis cache",
+      "type": "bool",
+      "default": "false"
+    },
+    {
+      "name": "postgres_version",
+      "description": "PostgreSQL version",
+      "type": "string",
+      "default": "15-alpine"
+    },
+    {
+      "name": "redis_version",
+      "description": "Redis version",
+      "type": "string",
+      "default": "7-alpine"
+    }
+  ]
+}
