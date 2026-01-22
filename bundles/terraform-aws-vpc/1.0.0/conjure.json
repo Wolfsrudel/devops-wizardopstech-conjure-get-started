@@ -1,8 +1,9 @@
 {
   "schema_version": "v1",
+  "bundle_type": "terraform",
   "bundle_name": "terraform-aws-vpc",
-  "description": "Complete AWS VPC with subnets, IGW, and route tables",
-  "variables": [
+  "bundle_description": "Complete AWS VPC with subnets, IGW, and route tables",
+  "shared_variables": [
     {
       "name": "vpc_name",
       "description": "VPC name",
@@ -34,18 +35,5 @@
       "default": "dev"
     }
   ],
-  "templates": [
-    {
-      "name": "main",
-      "output": "main.tf"
-    },
-    {
-      "name": "variables",
-      "output": "variables.tf"
-    },
-    {
-      "name": "outputs",
-      "output": "outputs.tf"
-    }
-  ]
+  "template_variables": {}
 }

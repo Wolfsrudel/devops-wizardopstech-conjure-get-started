@@ -1,8 +1,9 @@
 {
   "schema_version": "v1",
+  "bundle_type": "kubernetes",
   "bundle_name": "k8s-web-app",
-  "description": "Complete Kubernetes web application stack (Deployment + Service + Ingress)",
-  "variables": [
+  "bundle_description": "Complete Kubernetes web application stack (Deployment + Service + Ingress)",
+  "shared_variables": [
     {
       "name": "app_name",
       "description": "Application name",
@@ -20,50 +21,80 @@
       "description": "Container image",
       "type": "string",
       "default": ""
-    },
-    {
-      "name": "replicas",
-      "description": "Number of replicas",
-      "type": "int",
-      "default": "3"
-    },
-    {
-      "name": "container_port",
-      "description": "Container port",
-      "type": "int",
-      "default": "8080"
-    },
-    {
-      "name": "hostname",
-      "description": "Ingress hostname",
-      "type": "string",
-      "default": ""
-    },
-    {
-      "name": "enable_tls",
-      "description": "Enable TLS",
-      "type": "bool",
-      "default": "true"
-    },
-    {
-      "name": "tls_secret_name",
-      "description": "TLS secret name",
-      "type": "string",
-      "default": ""
     }
   ],
-  "templates": [
-    {
-      "name": "deployment",
-      "output": "deployment.yaml"
-    },
-    {
-      "name": "service",
-      "output": "service.yaml"
-    },
-    {
-      "name": "ingress",
-      "output": "ingress.yaml"
-    }
-  ]
+  "template_variables": {
+    "deployment.yaml.tmpl": [
+      {
+        "name": "replicas",
+        "description": "Number of pod replicas",
+        "type": "int",
+        "default": "3"
+      },
+      {
+        "name": "container_port",
+        "description": "Container port",
+        "type": "int",
+        "default": "8080"
+      },
+      {
+        "name": "cpu_request",
+        "description": "CPU request (e.g., 100m)",
+        "type": "string",
+        "default": "100m"
+      },
+      {
+        "name": "cpu_limit",
+        "description": "CPU limit (e.g., 500m)",
+        "type": "string",
+        "default": "500m"
+      },
+      {
+        "name": "memory_request",
+        "description": "Memory request (e.g., 128Mi)",
+        "type": "string",
+        "default": "128Mi"
+      },
+      {
+        "name": "memory_limit",
+        "description": "Memory limit (e.g., 512Mi)",
+        "type": "string",
+        "default": "512Mi"
+      }
+    ],
+    "service.yaml.tmpl": [
+      {
+        "name": "service_type",
+        "description": "Service type (ClusterIP, NodePort, LoadBalancer)",
+        "type": "string",
+        "default": "ClusterIP"
+      },
+      {
+        "name": "service_port",
+        "description": "Service port",
+        "type": "int",
+        "default": "80"
+      }
+    ],
+    "ingress.yaml.tmpl": [
+      {
+        "name": "hostname",
+        "description": "Ingress hostname",
+        "type": "string",
+        "default": ""
+      },
+      {
+        "name": "enable_tls",
+        "description": "Enable TLS/HTTPS",
+        "type": "bool",
+        "default": "true"
+      },
+      {
+        "name": "tls_secret_name",
+        "description": "Name of TLS secret",
+        "type": "string",
+        "default": ""
+      }
+    ]
+  }
 }

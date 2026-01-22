@@ -1,8 +1,21 @@
+# Shared variables (used by all templates in the bundle)
 app_name: my-web-app
 namespace: production
 image: myregistry/web-app:v2.0.0
+
+# Template-specific variables for deployment.yaml.tmpl
 replicas: 3
 container_port: 8080
+cpu_request: 100m
+cpu_limit: 500m
+memory_request: 128Mi
+memory_limit: 512Mi
+
+# Template-specific variables for service.yaml.tmpl
+service_type: ClusterIP
+service_port: 80
+
+# Template-specific variables for ingress.yaml.tmpl
 hostname: app.example.com
 enable_tls: true
 tls_secret_name: app-example-com-tls

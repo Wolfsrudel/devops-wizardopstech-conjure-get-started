@@ -1,6 +1,6 @@
 # Conjure Get Started
 
-Example eady templates and bundles for Conjure. Clone this repository and start generating Kubernetes manifests, Terraform configurations, configuration files, and more.
+Example ready templates and bundles for Conjure. Clone this repository and start generating Kubernetes manifests, Terraform configurations, configuration files, and more.
 
 ## Quick Start
 

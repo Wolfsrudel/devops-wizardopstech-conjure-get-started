@@ -1,6 +1,6 @@
 {
   "schema_version": "v1",
-  "last_updated": "2026-01-21T20:52:42.7911732-05:00",
+  "last_updated": "2026-01-21T23:35:23.8639667-05:00",
   "templates": [
     {
       "name": "argocd-application",
@@ -654,8 +654,8 @@
   "bundles": [
     {
       "name": "docker-stack",
-      "type": "",
-      "description": "",
+      "type": "docker",
+      "description": "Complete Docker development stack (Docker Compose + Dockerfile)",
       "versions": [
         {
           "version": "1.0.0",
@@ -669,8 +669,8 @@
             {
               "name": "conjure.json",
               "path": "bundles/docker-stack/1.0.0/conjure.json",
-              "size": 1036,
-              "sha256": "ae922a6e6ba321c4247fd1c61a6c2b4d6cff6b50241d451a0b9844594fc9f917"
+              "size": 1834,
+              "sha256": "1f01ee38724d3426b054fae50792b0be65841522ed24c1fba4dc6a794d8e1efe"
             },
             {
               "name": "docker-compose.yml.tmpl",
@@ -684,8 +684,8 @@
     },
     {
       "name": "k8s-microservice",
-      "type": "",
-      "description": "",
+      "type": "kubernetes",
+      "description": "Kubernetes microservice with observability (Deployment + Service + ConfigMap + ServiceMonitor)",
       "versions": [
         {
           "version": "1.0.0",
@@ -699,8 +699,8 @@
             {
               "name": "conjure.json",
               "path": "bundles/k8s-microservice/1.0.0/conjure.json",
-              "size": 1486,
-              "sha256": "da2e9e17d4cee89e5a13c9e6cf71561fa533be16c669e08f48071d9948dd8a1f"
+              "size": 1222,
+              "sha256": "945308ff6bd11fb769307768518f93c94427f6a9cf50b92703c31aa06285604e"
             },
             {
               "name": "deployment.yaml.tmpl",
@@ -726,8 +726,8 @@
     },
     {
       "name": "k8s-web-app",
-      "type": "",
-      "description": "",
+      "type": "kubernetes",
+      "description": "Complete Kubernetes web application stack (Deployment + Service + Ingress)",
       "versions": [
         {
           "version": "1.0.0",
@@ -735,8 +735,8 @@
             {
               "name": "conjure.json",
               "path": "bundles/k8s-web-app/1.0.0/conjure.json",
-              "size": 1489,
-              "sha256": "4d9f402107887180f63fa46f0fc15993829483e78dcb40e715623d7a8925caef"
+              "size": 2464,
+              "sha256": "0b5315edfacb38e5d95bec2a17e727ace00f4ed41a33407c2ed2f7057f2dc3bd"
             },
             {
               "name": "deployment.yaml.tmpl",
@@ -762,8 +762,8 @@
     },
     {
       "name": "terraform-aws-vpc",
-      "type": "",
-      "description": "",
+      "type": "terraform",
+      "description": "Complete AWS VPC with subnets, IGW, and route tables",
       "versions": [
         {
           "version": "1.0.0",
@@ -771,8 +771,8 @@
             {
               "name": "conjure.json",
               "path": "bundles/terraform-aws-vpc/1.0.0/conjure.json",
-              "size": 1073,
-              "sha256": "4ce5c5ef5ecc83aafd9c46c09f7cd3c20b8aa7b0c6b30110ddb9f2fd5f3a9152"
+              "size": 913,
+              "sha256": "55b93b286c000cd467d1c8d2028ba34118df95b8e0499d4d53664e392052eff7"
             },
             {
               "name": "main.tf.tmpl",

@@ -1,0 +1,15 @@
+# Shared variables (used by all templates in the bundle)
+app_name: my-node-app
+node_version: 20-alpine
+
+# Template-specific variables for docker-compose.yml.tmpl
+app_port: 3000
+include_database: true
+include_redis: true
+postgres_version: 16-alpine
+redis_version: 7-alpine
+
+# Template-specific variables for Dockerfile.tmpl
+expose_port: 3000
+build_command: npm run build
+start_command: npm start

@@ -1,8 +1,9 @@
 {
   "schema_version": "v1",
+  "bundle_type": "kubernetes",
   "bundle_name": "k8s-microservice",
-  "description": "Kubernetes microservice with observability (Deployment + Service + ConfigMap + ServiceMonitor)",
-  "variables": [
+  "bundle_description": "Kubernetes microservice with observability (Deployment + Service + ConfigMap + ServiceMonitor)",
+  "shared_variables": [
     {
       "name": "app_name",
       "description": "Application name",
@@ -46,22 +47,5 @@
       "default": "true"
     }
   ],
-  "templates": [
-    {
-      "name": "deployment",
-      "output": "deployment.yaml"
-    },
-    {
-      "name": "service",
-      "output": "service.yaml"
-    },
-    {
-      "name": "configmap",
-      "output": "configmap.yaml"
-    },
-    {
-      "name": "servicemonitor",
-      "output": "servicemonitor.yaml"
-    }
-  ]
+  "template_variables": {}
 }
