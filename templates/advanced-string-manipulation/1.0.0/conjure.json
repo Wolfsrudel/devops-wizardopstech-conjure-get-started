@@ -1,0 +1,38 @@
+{
+  "schema_version": "v1",
+  "template_name": "advanced-string-manipulation.yaml",
+  "template_description": "Demonstrates Go template string manipulation with printf formatting",
+  "template_type": "yaml",
+  "variables": [
+    {
+      "name": "app_name",
+      "description": "Application name (will be transformed with upper/lower/printf)",
+      "type": "string",
+      "default": "myapp"
+    },
+    {
+      "name": "environment",
+      "description": "Environment name (dev, staging, production)",
+      "type": "string",
+      "default": "production"
+    },
+    {
+      "name": "registry",
+      "description": "Container registry domain",
+      "type": "string",
+      "default": "ghcr.io/myorg"
+    },
+    {
+      "name": "version",
+      "description": "Application version number",
+      "type": "string",
+      "default": "1.0.0"
+    },
+    {
+      "name": "namespace",
+      "description": "Kubernetes namespace",
+      "type": "string",
+      "default": "default"
+    }
+  ]
+}

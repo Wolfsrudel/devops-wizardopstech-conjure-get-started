@@ -1,0 +1,146 @@
+# Dynamic Resource Names Examples
+# This template demonstrates variable assignment and dynamic resource naming
+
+{{- $appName := .app_name -}}
+{{- $namespace := .namespace -}}
+{{- $environment := .environment -}}
+{{- $team := .team -}}
+
+# Construct composite names using variables
+{{- $fullName := printf "%s-%s" $appName $namespace -}}
+{{- $resourcePrefix := printf "%s-%s" $team $environment -}}
+{{- $uniqueId := printf "%s-%s-%s" $team $appName $environment -}}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  # Use constructed variable for service name
+  name: {{$fullName}}-service
+  namespace: {{$namespace}}
+  labels:
+    app: {{$appName}}
+    environment: {{$environment}}
+    team: {{$team}}
+    # Use composite variables in labels
+    full-name: {{$fullName}}
+    resource-prefix: {{$resourcePrefix}}
+spec:
+  selector:
+    app: {{$appName}}
+  ports:
+  - port: 80
+    targetPort: 8080
+    name: {{printf "%s-http" $appName}}
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  # Dynamic name using all variables
+  name: {{$uniqueId}}-config
+  namespace: {{$namespace}}
+  labels:
+    managed-by: {{$team}}
+data:
+  # Use variables in data values
+  app_identifier: {{$uniqueId}}
+  service_name: {{$fullName}}-service
+  namespace: {{$namespace}}
+
+  # Create dynamic keys and values
+  {{printf "%s_endpoint" $appName}}: "http://{{$fullName}}-service.{{$namespace}}.svc.cluster.local"
+  {{printf "%s_port" $appName}}: "80"
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  # Another dynamic name pattern
+  name: {{printf "%s-%s-secrets" $resourcePrefix $appName}}
+  namespace: {{$namespace}}
+type: Opaque
+stringData:
+  # Dynamic secret keys using printf
+  {{printf "%s_api_key" $appName}}: "changeme"
+  {{printf "%s_db_password" $appName}}: "changeme"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{$fullName}}-deployment
+  namespace: {{$namespace}}
+  labels:
+    app: {{$appName}}
+    {{- $labelPrefix := printf "%s.%s" $team "example.com" }}
+    {{$labelPrefix}}/managed-by: conjure
+    {{$labelPrefix}}/environment: {{$environment}}
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: {{$appName}}
+  template:
+    metadata:
+      labels:
+        app: {{$appName}}
+      annotations:
+        # Dynamic annotation keys
+        {{printf "config.%s/version" $team}}: "1.0.0"
+        {{printf "deploy.%s/timestamp" $team}}: "auto-generated"
+    spec:
+      # Dynamic service account name
+      serviceAccountName: {{printf "%s-sa" $fullName}}
+      containers:
+      - name: {{$appName}}
+        image: {{printf "%s/%s:latest" $team $appName}}
+
+        # Environment variables with dynamic names
+        env:
+        - name: APP_NAME
+          value: {{$appName}}
+        - name: {{printf "%s_NAMESPACE" $appName}}
+          value: {{$namespace}}
+        - name: {{printf "%s_ENVIRONMENT" $appName}}
+          value: {{$environment}}
+
+        # Dynamic volume mount names
+        volumeMounts:
+        - name: {{printf "%s-config" $appName}}
+          mountPath: /etc/config
+        - name: {{printf "%s-secrets" $appName}}
+          mountPath: /etc/secrets
+
+      volumes:
+      - name: {{printf "%s-config" $appName}}
+        configMap:
+          name: {{$uniqueId}}-config
+      - name: {{printf "%s-secrets" $appName}}
+        secret:
+          secretName: {{printf "%s-%s-secrets" $resourcePrefix $appName}}
+
+---
+# Advanced variable patterns:
+#
+# These are syntax examples (shown as plain text, not executed).
+
+# 1. Variable assignment
+# $var := .value
+
+# 2. Printf to construct strings
+# $name := printf "%s-%s" .app .env
+
+# 3. Reuse variables multiple times
+# name: $name-service
+# selector: $name
+
+# 4. Nested printf
+# $url := printf "https://%s.%s.example.com" .app .env
+
+# 5. Use in conditionals
+# if eq $environment "production"
+
+# 6. Complex constructions
+# $prefix := printf "%s/%s" .team .project
+# $fullImage := printf "%s/%s:%s" $prefix .app .version

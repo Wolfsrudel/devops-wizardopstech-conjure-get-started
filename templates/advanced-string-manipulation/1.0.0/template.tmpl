@@ -1,0 +1,61 @@
+# String Manipulation Examples
+# This template demonstrates Go template string manipulation with printf
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{.app_name}}-config
+  namespace: {{.namespace}}
+
+  labels:
+    app: {{.app_name}}
+    environment: {{.environment}}
+
+data:
+  # Printf formatting - add prefix
+  app_version: {{printf "v%s" .version}}
+
+  # Printf formatting - combine multiple values
+  full_app_name: {{printf "%s-%s" .app_name .environment}}
+
+  # Complex printf - image URL construction
+  image_url: {{printf "%s/%s:%s" .registry .app_name .version}}
+
+  # Printf with namespace
+  service_endpoint: {{printf "%s.%s.svc.cluster.local" .app_name .namespace}}
+
+  # Printf for resource names
+  deployment_name: {{printf "%s-%s-deployment" .app_name .environment}}
+  service_name: {{printf "%s-%s-service" .app_name .environment}}
+  secret_name: {{printf "%s-%s-secrets" .app_name .environment}}
+
+  # Printf with version formatting
+  docker_tag: {{printf "%s/%s:v%s" .registry .app_name .version}}
+
+  # Multiple variables in single printf
+  unique_id: {{printf "%s-%s-%s" .environment .app_name .namespace}}
+
+  # Printf with explicit formatting
+  log_prefix: {{printf "[%s][%s]" .app_name .environment}}
+
+---
+# Examples of printf patterns:
+#
+# These are examples showing the printf syntax.
+# The template code is shown as literal strings (not executed).
+
+# 1. Simple prefix/suffix
+# printf "v%s" .version → "v1.0.0"
+# printf "%s-suffix" .name → "myapp-suffix"
+
+# 2. Combining variables
+# printf "%s-%s" .app .env → "myapp-production"
+
+# 3. Complex constructions
+# printf "%s/%s:%s" .registry .app .version → "gcr.io/myapp:1.0.0"
+
+# 4. Multiple variables
+# printf "%s-%s-%s" .team .app .env → "platform-myapp-production"
+
+# 5. With literals and variables
+# printf "http://%s.%s.svc" .name .namespace → "http://myapp.default.svc"

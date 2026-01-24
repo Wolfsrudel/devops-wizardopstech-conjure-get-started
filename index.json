@@ -1,11 +1,107 @@
 {
   "schema_version": "v1",
-  "last_updated": "2026-01-21T23:35:23.8639667-05:00",
+  "last_updated": "2026-01-24T10:44:42.1963616-05:00",
   "templates": [
+    {
+      "name": "advanced-dynamic-names",
+      "type": "yaml",
+      "description": "Demonstrates variable assignment and dynamic resource naming",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/advanced-dynamic-names/1.0.0/conjure.json",
+              "size": 769,
+              "sha256": "8d64bb3dfca0b32bcbc9b19ce00c9b78f2643f92deaa3670a3554535acffa2c2"
+            },
+            {
+              "name": "template.tmpl",
+              "path": "templates/advanced-dynamic-names/1.0.0/template.tmpl",
+              "size": 4025,
+              "sha256": "d8c66eb87853f5093f23e525013b416b3d8ac4e019c61f4f7363d33bb9caa8ed"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "advanced-multi-condition",
+      "type": "yaml",
+      "description": "Demonstrates combining multiple conditions with and/or operators",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/advanced-multi-condition/1.0.0/conjure.json",
+              "size": 1015,
+              "sha256": "be6a63d8bbf251e72373794e4ffeaaf4ebb171aa54128c433e299ac7b22aafda"
+            },
+            {
+              "name": "template.tmpl",
+              "path": "templates/advanced-multi-condition/1.0.0/template.tmpl",
+              "size": 4594,
+              "sha256": "a5b2f7173569dda2b29913023001666c8f861c65c2faac19efa54efa2058e7e2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "advanced-multi-level-conditional",
+      "type": "yaml",
+      "description": "Demonstrates nested if/else conditionals for environment-specific configurations",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/advanced-multi-level-conditional/1.0.0/conjure.json",
+              "size": 855,
+              "sha256": "ac3c927468919428a798bc264eef43d7afd757984e788c88d394a70c7c903f67"
+            },
+            {
+              "name": "template.tmpl",
+              "path": "templates/advanced-multi-level-conditional/1.0.0/template.tmpl",
+              "size": 3899,
+              "sha256": "f8777bce855bc256c097a60f5f569498cd9cc34d0827299a1fc58a49cf715841"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "advanced-string-manipulation",
+      "type": "yaml",
+      "description": "Demonstrates Go template string manipulation with printf formatting",
+      "versions": [
+        {
+          "version": "1.0.0",
+          "files": [
+            {
+              "name": "conjure.json",
+              "path": "templates/advanced-string-manipulation/1.0.0/conjure.json",
+              "size": 1027,
+              "sha256": "6ad5d56902ccd2d8a8edff6ee5ff43a9086cffe5fce3eca349d69694a19df8aa"
+            },
+            {
+              "name": "template.tmpl",
+              "path": "templates/advanced-string-manipulation/1.0.0/template.tmpl",
+              "size": 1915,
+              "sha256": "9501549994d50a415d16432521f4012a9ad8951fcaebb4f219840ca9684c7701"
+            }
+          ]
+        }
+      ]
+    },
     {
       "name": "argocd-application",
       "type": "kubernetes",
-      "description": "",
+      "description": "ArgoCD Application manifest for GitOps deployments",
       "versions": [
         {
           "version": "1.0.0",
@@ -29,7 +125,7 @@
     {
       "name": "cron-job",
       "type": "system",
-      "description": "",
+      "description": "Crontab entry for scheduled tasks",
       "versions": [
         {
           "version": "1.0.0",
@@ -53,7 +149,7 @@
     {
       "name": "docker-compose",
       "type": "docker",
-      "description": "",
+      "description": "Docker Compose configuration for local development",
       "versions": [
         {
           "version": "1.0.0",
@@ -77,7 +173,7 @@
     {
       "name": "dockerfile",
       "type": "docker",
-      "description": "",
+      "description": "Multi-stage Dockerfile for Node.js applications",
       "versions": [
         {
           "version": "1.0.0",
@@ -101,7 +197,7 @@
     {
       "name": "env-file",
       "type": "system",
-      "description": "",
+      "description": "Environment variables file for applications",
       "versions": [
         {
           "version": "1.0.0",
@@ -125,7 +221,7 @@
     {
       "name": "github-actions-ci",
       "type": "ci-cd",
-      "description": "",
+      "description": "GitHub Actions CI workflow for build, test, and deploy",
       "versions": [
         {
           "version": "1.0.0",
@@ -149,7 +245,7 @@
     {
       "name": "gitlab-ci",
       "type": "ci-cd",
-      "description": "",
+      "description": "GitLab CI pipeline for build, test, and deploy",
       "versions": [
         {
           "version": "1.0.0",
@@ -173,7 +269,7 @@
     {
       "name": "grafana-dashboard",
       "type": "config",
-      "description": "",
+      "description": "Grafana dashboard configuration for application monitoring",
       "versions": [
         {
           "version": "1.0.0",
@@ -197,7 +293,7 @@
     {
       "name": "hashicorp-vault-config",
       "type": "config",
-      "description": "",
+      "description": "HashiCorp Vault server configuration",
       "versions": [
         {
           "version": "1.0.0",
@@ -221,7 +317,7 @@
     {
       "name": "jenkinsfile",
       "type": "ci-cd",
-      "description": "",
+      "description": "Jenkins declarative pipeline for CI/CD",
       "versions": [
         {
           "version": "1.0.0",
@@ -245,7 +341,7 @@
     {
       "name": "k8s-cert-manager",
       "type": "kubernetes",
-      "description": "",
+      "description": "Cert-Manager Certificate CRD for TLS certificate automation",
       "versions": [
         {
           "version": "1.0.0",
@@ -269,7 +365,7 @@
     {
       "name": "k8s-configmap",
       "type": "kubernetes",
-      "description": "",
+      "description": "Kubernetes ConfigMap for application configuration",
       "versions": [
         {
           "version": "1.0.0",
@@ -293,7 +389,7 @@
     {
       "name": "k8s-deployment",
       "type": "kubernetes",
-      "description": "",
+      "description": "Kubernetes Deployment manifest with configurable replicas, resources, and health checks",
       "versions": [
         {
           "version": "1.0.0",
@@ -317,7 +413,7 @@
     {
       "name": "k8s-hpa",
       "type": "kubernetes",
-      "description": "",
+      "description": "Kubernetes Horizontal Pod Autoscaler for automatic scaling",
       "versions": [
         {
           "version": "1.0.0",
@@ -341,7 +437,7 @@
     {
       "name": "k8s-ingress-nginx",
       "type": "kubernetes",
-      "description": "",
+      "description": "NGINX Ingress manifest with TLS support",
       "versions": [
         {
           "version": "1.0.0",
@@ -365,7 +461,7 @@
     {
       "name": "k8s-secret",
       "type": "kubernetes",
-      "description": "",
+      "description": "Kubernetes Secret for sensitive data (Base64 encoded)",
       "versions": [
         {
           "version": "1.0.0",
@@ -389,7 +485,7 @@
     {
       "name": "k8s-service",
       "type": "kubernetes",
-      "description": "",
+      "description": "Kubernetes Service manifest (ClusterIP, NodePort, LoadBalancer)",
       "versions": [
         {
           "version": "1.0.0",
@@ -413,7 +509,7 @@
     {
       "name": "minecraft-server",
       "type": "gaming",
-      "description": "",
+      "description": "Minecraft server configuration",
       "versions": [
         {
           "version": "1.0.0",
@@ -437,7 +533,7 @@
     {
       "name": "nginx-config",
       "type": "config",
-      "description": "",
+      "description": "NGINX server configuration for reverse proxy",
       "versions": [
         {
           "version": "1.0.0",
@@ -461,7 +557,7 @@
     {
       "name": "palworld-server",
       "type": "gaming",
-      "description": "",
+      "description": "Palworld dedicated server configuration",
       "versions": [
         {
           "version": "1.0.0",
@@ -485,7 +581,7 @@
     {
       "name": "postgresql-config",
       "type": "config",
-      "description": "",
+      "description": "PostgreSQL server configuration",
       "versions": [
         {
           "version": "1.0.0",
@@ -509,7 +605,7 @@
     {
       "name": "prometheus-config",
       "type": "config",
-      "description": "",
+      "description": "Prometheus server configuration",
       "versions": [
         {
           "version": "1.0.0",
@@ -533,7 +629,7 @@
     {
       "name": "redis-config",
       "type": "config",
-      "description": "",
+      "description": "Redis server configuration",
       "versions": [
         {
           "version": "1.0.0",
@@ -557,7 +653,7 @@
     {
       "name": "systemd-service",
       "type": "system",
-      "description": "",
+      "description": "Linux systemd service unit file",
       "versions": [
         {
           "version": "1.0.0",
@@ -581,7 +677,7 @@
     {
       "name": "terraform-aws-ec2",
       "type": "terraform",
-      "description": "",
+      "description": "Terraform configuration for AWS EC2 instance",
       "versions": [
         {
           "version": "1.0.0",
@@ -605,7 +701,7 @@
     {
       "name": "terraform-azure-vm",
       "type": "terraform",
-      "description": "",
+      "description": "Terraform configuration for Azure Virtual Machine",
       "versions": [
         {
           "version": "1.0.0",
@@ -629,7 +725,7 @@
     {
       "name": "terraform-gcp-vm",
       "type": "terraform",
-      "description": "",
+      "description": "Terraform configuration for GCP Compute Engine instance",
       "versions": [
         {
           "version": "1.0.0",

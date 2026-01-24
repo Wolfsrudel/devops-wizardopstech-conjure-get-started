@@ -1,0 +1,155 @@
+# Multi-Condition Examples
+# This template demonstrates combining multiple conditions using and/or operators
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.app_name}}
+spec:
+  # Conditional replica count based on environment and scale
+  {{- if eq .environment "production"}}
+  {{- if eq .scale_tier "large"}}
+  replicas: 10
+  {{- else}}
+  replicas: 5
+  {{- end}}
+  {{- else if eq .environment "staging"}}
+  replicas: 2
+  {{- else}}
+  replicas: 1
+  {{- end}}
+
+  # AND condition: Production + US East + Large scale
+  {{- if and (eq .environment "production") (eq .region "us-east-1") (eq .scale_tier "large")}}
+  # This block only applies to production deployments in US East with large scale
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: app
+            operator: In
+            values:
+            - {{.app_name}}
+        topologyKey: kubernetes.io/hostname
+  {{- end}}
+
+  selector:
+    matchLabels:
+      app: {{.app_name}}
+  template:
+    metadata:
+      labels:
+        app: {{.app_name}}
+      annotations:
+        # OR condition: Either production or staging
+        {{- if or (eq .environment "production") (eq .environment "staging")}}
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9090"
+        {{- end}}
+
+        # Complex AND condition: Production or (Staging with monitoring enabled)
+        {{- if or (eq .environment "production") (and (eq .environment "staging") (eq .enable_monitoring "true"))}}
+        monitoring.enabled: "true"
+        {{- end}}
+
+        # Multiple AND conditions
+        {{- if and (eq .environment "production") (eq .region "us-east-1") (eq .scale_tier "large") (eq .enable_monitoring "true")}}
+        high-availability: "true"
+        disaster-recovery: "enabled"
+        {{- end}}
+
+    spec:
+      containers:
+      - name: {{.app_name}}
+        image: {{.app_name}}:latest
+
+        # OR condition for regions
+        {{- if or (eq .region "us-east-1") (eq .region "us-west-2")}}
+        env:
+        - name: AWS_REGION
+          value: {{.region}}
+        {{- end}}
+
+        # AND + OR combination
+        {{- if and (or (eq .environment "production") (eq .environment "staging")) (eq .scale_tier "large")}}
+        # Production or staging with large scale
+        resources:
+          requests:
+            cpu: 250m
+            memory: 512Mi
+          limits:
+            cpu: 1000m
+            memory: 2Gi
+        {{- else}}
+        # Development or small scale deployments
+        resources:
+          requests:
+            cpu: 50m
+            memory: 128Mi
+          limits:
+            cpu: 200m
+            memory: 256Mi
+        {{- end}}
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{.app_name}}
+  annotations:
+    # NOT operator using 'ne' (checking if NOT development)
+    {{- if and (ne .environment "development") (eq .enable_monitoring "true")}}
+    service.beta.kubernetes.io/aws-load-balancer-internal: "false"
+    {{- end}}
+
+    # Complex condition: Production in specific regions OR staging with monitoring
+    {{- if or (and (eq .environment "production") (or (eq .region "us-east-1") (eq .region "eu-west-1"))) (and (eq .environment "staging") (eq .enable_monitoring "true"))}}
+    external-dns.alpha.kubernetes.io/hostname: {{.app_name}}.example.com
+    {{- end}}
+
+spec:
+  # Service type based on environment
+  {{- if eq .environment "production"}}
+  type: LoadBalancer
+  {{- else if and (eq .environment "staging") (eq .scale_tier "large")}}
+  type: NodePort
+  {{- else}}
+  type: ClusterIP
+  {{- end}}
+
+  selector:
+    app: {{.app_name}}
+  ports:
+  - port: 80
+    targetPort: 8080
+
+---
+# Examples of condition combinations:
+#
+# These are syntax examples (shown as plain text, not executed).
+
+# 1. Simple AND
+# if and (eq .env "prod") (eq .region "us-east-1")
+
+# 2. Simple OR
+# if or (eq .env "prod") (eq .env "staging")
+
+# 3. NOT with ne (not equal)
+# if ne .env "development"
+
+# 4. Complex nested
+# if and (or (eq .env "prod") (eq .env "staging")) (eq .tier "large")
+
+# 5. Multiple ORs
+# if or (eq .region "us-east-1") (eq .region "us-west-2") (eq .region "eu-west-1")
+
+# 6. Combining AND and OR
+# if and (or (eq .env "prod") (eq .env "staging")) (ne .region "deprecated")
+
+# Available operators:
+# - eq: equal
+# - ne: not equal
+# - and: logical AND
+# - or: logical OR
+# - not: logical NOT (use 'ne' for not-equal comparisons)

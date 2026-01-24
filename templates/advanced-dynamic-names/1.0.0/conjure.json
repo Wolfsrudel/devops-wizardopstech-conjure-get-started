@@ -1,0 +1,32 @@
+{
+  "schema_version": "v1",
+  "template_name": "advanced-dynamic-names.yaml",
+  "template_description": "Demonstrates variable assignment and dynamic resource naming",
+  "template_type": "yaml",
+  "variables": [
+    {
+      "name": "app_name",
+      "description": "Application name",
+      "type": "string",
+      "default": "myapp"
+    },
+    {
+      "name": "namespace",
+      "description": "Kubernetes namespace",
+      "type": "string",
+      "default": "production"
+    },
+    {
+      "name": "environment",
+      "description": "Environment name",
+      "type": "string",
+      "default": "prod"
+    },
+    {
+      "name": "team",
+      "description": "Team name",
+      "type": "string",
+      "default": "platform"
+    }
+  ]
+}

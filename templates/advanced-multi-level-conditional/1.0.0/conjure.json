@@ -1,0 +1,32 @@
+{
+  "schema_version": "v1",
+  "template_name": "advanced-multi-level-conditional.yaml",
+  "template_description": "Demonstrates nested if/else conditionals for environment-specific configurations",
+  "template_type": "yaml",
+  "variables": [
+    {
+      "name": "app_name",
+      "description": "Application name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "namespace",
+      "description": "Kubernetes namespace",
+      "type": "string",
+      "default": "default"
+    },
+    {
+      "name": "environment",
+      "description": "Environment (production, staging, development)",
+      "type": "string",
+      "default": "development"
+    },
+    {
+      "name": "scale_tier",
+      "description": "Scale tier (small, medium, large)",
+      "type": "string",
+      "default": "small"
+    }
+  ]
+}

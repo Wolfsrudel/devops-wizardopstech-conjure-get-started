@@ -1,0 +1,38 @@
+{
+  "schema_version": "v1",
+  "template_name": "advanced-multi-condition.yaml",
+  "template_description": "Demonstrates combining multiple conditions with and/or operators",
+  "template_type": "yaml",
+  "variables": [
+    {
+      "name": "app_name",
+      "description": "Application name",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "environment",
+      "description": "Environment (production, staging, development)",
+      "type": "string",
+      "default": "production"
+    },
+    {
+      "name": "region",
+      "description": "Cloud region (us-east-1, us-west-2, eu-west-1)",
+      "type": "string",
+      "default": "us-east-1"
+    },
+    {
+      "name": "scale_tier",
+      "description": "Scale tier (small, medium, large)",
+      "type": "string",
+      "default": "small"
+    },
+    {
+      "name": "enable_monitoring",
+      "description": "Enable monitoring (true or false)",
+      "type": "string",
+      "default": "true"
+    }
+  ]
+}
