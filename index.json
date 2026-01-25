@@ -1,6 +1,6 @@
 {
   "schema_version": "v1",
-  "last_updated": "2026-01-24T12:30:14.531494507-05:00",
+  "last_updated": "2026-01-25T17:05:50.0530485-05:00",
   "templates": [
     {
       "name": "advanced-dynamic-names",
@@ -67,8 +67,8 @@
             {
               "name": "template.tmpl",
               "path": "templates/advanced-multi-level-conditional/1.0.0/template.tmpl",
-              "size": 3899,
-              "sha256": "f8777bce855bc256c097a60f5f569498cd9cc34d0827299a1fc58a49cf715841"
+              "size": 3153,
+              "sha256": "a6f905013fc82afced1b3dc16f43e2f82f006861a3dc00566b33b99362773186"
             }
           ]
         }
